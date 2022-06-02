@@ -128,11 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# json data in base directory and data subdirectory
-/data/gg2013.json
-/data/gg2015.json
-/gg-project-master-master/
-
 #VS Code
 .vscode/
 

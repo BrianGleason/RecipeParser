@@ -1,3 +1,7 @@
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+
 from bs4 import BeautifulSoup
 
 import urllib.parse
@@ -64,6 +68,21 @@ def food_diet(ingredient):
 	elif ingredient["type"] == "Soup":
 		return None
 
+def quantity_mod(ingredients, ratio):
+    for ingredient in ingredients:
+        if ingredient["quantity"]: ingredient["quantity"] *= ratio
+
+    return ingredients
+
+def cooking_method(instruction):
+    # TODO Add more cooking methods
+    allowed_methods = ["marinade","preheat","bake","skillet"]
+    verb_tags = ["NN","NNP"]
+    verbs = [a[0] for a in nltk.pos_tag(nltk.word_tokenize(instruction)) if a[1] in verb_tags]
+    methods = [a for a in verbs if a in allowed_methods]
+    # TODO Group cooking methods like bake/preheat
+    # TODO Primary and secondary methods
+    return methods
 
 # Testing functions
 if __name__ == '__main__':
