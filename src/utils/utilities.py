@@ -12,11 +12,11 @@ def parse_recipie(url):
 	req = urllib.request.Request(url)
 	req.add_header('Cookie', 'euConsent=true')
 	soup = BeautifulSoup(urllib.request.urlopen(req).read(), 'html.parser')
-	
+
 	ingredient_tags = soup.findAll("li", {"class": "ingredients-item"})
 	instruction_tags = soup.findAll("li", {"class": "subcontainer instructions-section-item"})
 
-	ingredients = [] 
+	ingredients = []
 	for tag in ingredient_tags:
 		ingredient = {}
 
@@ -25,7 +25,7 @@ def parse_recipie(url):
 		except ValueError:
 			ingredient['name'] = tag.findChild("input")['data-ingredient']
 			ingredient['prep'] = ''
-		
+
 		ingredient['quantity'] = tag.findChild("input")['data-init-quantity']
 		ingredient['unit'] = tag.findChild("input")['data-unit']
 		ingredient['type'] = tag.findChild("input")['data-store_location']
@@ -34,15 +34,15 @@ def parse_recipie(url):
 	instructions = []
 	for tag in instruction_tags:
 		instructions.append(tag.find('p').getText())
-	
+
 	pprint(ingredients)
 	pprint(instructions)
 	return ingredients, instructions
 
 def food_diet(ingredient):
 	# TODO: return all deitary restrictions category allows, healthy/non-healthy instead of keyword
-	# See examples below. 
-	# There are useful and non-useful categories. "Soup" is not useful because soup can contain meat or gluten, 
+	# See examples below.
+	# There are useful and non-useful categories. "Soup" is not useful because soup can contain meat or gluten,
 	# i.e. "beef broth" is not vegitarian
 
 	if ingredient["type"] == "Beverages":
@@ -63,7 +63,7 @@ def food_diet(ingredient):
 		return None
 	elif ingredient["type"] == "Soup":
 		return None
-	
+
 
 # Testing functions
 if __name__ == '__main__':
