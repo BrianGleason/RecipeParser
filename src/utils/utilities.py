@@ -1,8 +1,9 @@
 import pymongo
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["cooking_data"]
-recipies = db["recipie_data"]
-diets = db["diet_data"]
+recipies = db["recipie_data"] # Contains recipies
+nutrition = db["nutrition_data"] # Contains food deitary information
+methods = db["method_methods"] # Contains methods and tools used in method
 
 import nltk
 nltk.download('punkt')
@@ -57,12 +58,35 @@ def parse_recipie(url):
     # TODO: Duplicate detection
     recipies.insert_one(recipie)
 
-def food_classifier(ingredient):
+def quantity_mod(ingredients, ratio):
+    for ingredient in ingredients:
+        if ingredient["quantity"]: ingredient["quantity"] *= ratio
+
+    return ingredients
+
+def replace_ingredient(instructions, target, substitute):
+    for i, instruction in enumerate(instructions):
+        if target in instruction:
+            ingredients[i] = ingredient.replace(target, substitute)
+
+# TODO Add cooking method / tools allowed_targets to database
+def instruction_subject(instructions, allowed_targets, word_tags):
+    """ Word identification used for finding cooking methods and tools.
+    """
+    # TODO Primary and secondary targets, groups
+    targets = []
+    for instruction in instructions:
+        verbs = [a[0] for a in nltk.pos_tag(nltk.word_tokenize(instruction)) if a[1] in word_tags]
+        targets.append([a for a in verbs if a in allowed_targets])
+    return targets
+
+# TODO Change to database lookup
+def ingredient_classifier(ingredient):
     # Hopefully all the hardcoded garbage can go in this function.
     # There are useful and non-useful categories. "Soup" is not useful because soup can contain meat or gluten,
     # i.e. "beef broth" is not vegitarian
 
-    diet = {
+    ingredient_diet = {
         'Name': ingredient['name'],
         'Contains' : {'Meat': None, 'Gluten': None, 'Lactose': None},
         'Healthy' : 2
@@ -89,28 +113,7 @@ def food_classifier(ingredient):
             diet['Healthy'] = 1
     # Note: Baking Supplies, Ethnic Foods, Canned Foods, Soup indicate nothing about diet
 
-    diets.insert_one(diet)
-
-def quantity_mod(ingredients, ratio):
-    for ingredient in ingredients:
-        if ingredient["quantity"]: ingredient["quantity"] *= ratio
-
-    return ingredients
-
-def replace_ingredient(instructions, target, substitute):
-    for i, instruction in enumerate(instructions):
-        if target in instruction:
-            ingredients[i] = ingredient.replace(target, substitute)
-
-def cooking_method(instruction):
-    # TODO Add more cooking methods
-    allowed_methods = ["marinade","preheat","bake","skillet"]
-    verb_tags = ["NN","NNP"]
-    verbs = [a[0] for a in nltk.pos_tag(nltk.word_tokenize(instruction)) if a[1] in verb_tags]
-    methods = [a for a in verbs if a in allowed_methods]
-    # TODO Group cooking methods like bake/preheat
-    # TODO Primary and secondary methods
-    return methods
+    nutrition.insert_one(ingredient_diet)
 
 # Testing functions
 if __name__ == '__main__':
