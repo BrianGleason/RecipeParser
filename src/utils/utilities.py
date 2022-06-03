@@ -80,40 +80,70 @@ def instruction_subject(instructions, allowed_targets, word_tags):
         targets.append([a for a in verbs if a in allowed_targets])
     return targets
 
-# TODO Change to database lookup
-def ingredient_classifier(ingredient):
-    # Hopefully all the hardcoded garbage can go in this function.
-    # There are useful and non-useful categories. "Soup" is not useful because soup can contain meat or gluten,
-    # i.e. "beef broth" is not vegitarian
+def populate_db():
+    """Manually populate database with hardcoded values. Subject to change.
+    Hopefully all the arbitary choices can stay here.
 
-    diet = {
-        'Name': ingredient['name'],
-        'Contains' : {'Meat': None, 'Gluten': None, 'Lactose': None},
-        'Healthy' : 2
-    }
+    Usually populating comes in a separate step, but becuase the arbitary nature
+    of choosing certain values (like healthy scores) I've manually added code here.
 
-    match ingredient['type']:
-        case 'Herbs and Spices' | 'Produce':
-            diet['Contains']['Meat'] = False
-            diet['Contains']['Gluten'] = False
-            diet['Contains']['Lactose'] = False
-            diet['Healthy'] = 3
-        case 'Beverages' | 'Natural/Organic Foods' | 'Basic Cooking Ingredients':
-            diet['Contains']['Meat'] = False
-            diet['Contains']['Gluten'] = False
-        case 'Meats, Fish and Seafood':
-            diet['Contains']['Meat'] = True
-            diet['Contains']['Gluten'] = False
-            diet['Contains']['Lactose'] = False
-            diet['Healthy'] = 1
-        case 'Dairy, Eggs and Milk':
-            diet['Contains']['Meat'] = False
-            diet['Contains']['Gluten'] = False
-            diet['Contains']['Lactose'] = True
-            diet['Healthy'] = 1
-    # Note: Baking Supplies, Ethnic Foods, Canned Foods, Soup indicate nothing about diet
+    There are useful and non-useful categories. "Soup" is not useful because soup can
+     contain meat or gluten, i.e. "beef broth" is not vegitarian.
+    Baking Supplies, Ethnic Foods, Canned Foods, Soup indicate nothing about diet
 
-    nutrition.insert_one(diet)
+    This means there are "Category" types and "Specifier" types.
+    Specifiers should have either a T/F in each contains key-value.
+    """
+
+    nutrition.insert_one({
+        'Name': 'Herbs and Spices',
+        'Type': 'Category',
+        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': False},
+        'Healthy' : 3
+    })
+    nutrition.insert_one({
+        'Name': 'Produce',
+        'Type': 'Category',
+        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': False},
+        'Healthy': 3
+    })
+    nutrition.insert_one({
+        'Name': 'Beverages',
+        'Type': 'Category',
+        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
+        'Healthy': 2
+    })
+    nutrition.insert_one({
+        'Name': 'Natural/Organic Foods',
+        'Type': 'Category',
+        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
+        'Healthy': 3
+    })
+    nutrition.insert_one({
+        'Name': 'Basic Cooking Ingredients',
+        'Type': 'Category',
+        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
+        'Healthy': 2
+    })
+    nutrition.insert_one({
+        'Name': 'Meats, Fish and Seafood',
+        'Type': 'Category',
+        'Contains': {'Meat': True, 'Gluten': False, 'Lactose': False},
+        'Healthy': 1
+    })
+    nutrition.insert_one({
+        'Name': 'Dairy, Eggs and Milk',
+        'Type': 'Category',
+        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': True},
+        'Healthy': 1
+    })
+
+    # TODO: Add more cooking methods, tools
+    methods.insert_one({
+        'Name': 'Saute',
+        'References': ["saute", "brown", "sizzle"],
+        'Tools': ["pan", "spatula"]
+    })
 
 # Testing functions
 if __name__ == '__main__':
