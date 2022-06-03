@@ -1,5 +1,4 @@
 import pymongo
-
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["cooking_data"]
 recipies = db["recipie_data"]
@@ -75,7 +74,7 @@ def food_classifier(ingredient):
             diet['Contains']['Gluten'] = False
             diet['Contains']['Lactose'] = False
             diet['Healthy'] = 3
-        case 'Beverages':
+        case 'Beverages' | 'Natural/Organic Foods' | 'Basic Cooking Ingredients':
             diet['Contains']['Meat'] = False
             diet['Contains']['Gluten'] = False
         case 'Meats, Fish and Seafood':
@@ -88,11 +87,7 @@ def food_classifier(ingredient):
             diet['Contains']['Gluten'] = False
             diet['Contains']['Lactose'] = True
             diet['Healthy'] = 1
-        case 'Baking Supplies':
-            diet['Contains']['Meat'] = False
-            diet['Contains']['Gluten'] = True
-            diet['Contains']['Lactose'] = True
-    # Basic Cooking Ingredients, Canned Foods, Soup indicate nothing
+    # Note: Baking Supplies, Ethnic Foods, Canned Foods, Soup indicate nothing about diet
 
     diets.insert_one(diet)
 
@@ -101,6 +96,11 @@ def quantity_mod(ingredients, ratio):
         if ingredient["quantity"]: ingredient["quantity"] *= ratio
 
     return ingredients
+
+def replace_ingredient(instructions, target, substitute):
+    for i, instruction in enumerate(instructions):
+        if target in instruction:
+            ingredients[i] = ingredient.replace(target, substitute)
 
 def cooking_method(instruction):
     # TODO Add more cooking methods
