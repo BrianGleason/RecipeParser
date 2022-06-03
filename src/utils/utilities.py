@@ -1,5 +1,5 @@
 import pymongo
-client = pymongo.MongoClient("mongodb://localhost:27017/")
+client = pymongo.MongoClient('localhost:27017')
 db = client["cooking_data"]
 recipies = db["recipie_data"] # Contains recipies
 nutrition = db["nutrition_data"] # Contains food deitary information
@@ -67,9 +67,9 @@ def quantity_mod(ingredients, ratio):
 def replace_ingredient(instructions, target, substitute):
     for i, instruction in enumerate(instructions):
         if target in instruction:
-            ingredients[i] = ingredient.replace(target, substitute)
+            instructions[i] = instruction.replace(target, substitute)
 
-# TODO Add cooking method / tools allowed_targets to database
+# TODO Change to cooking method / tools allowed_targets to database
 def instruction_subject(instructions, allowed_targets, word_tags):
     """ Word identification used for finding cooking methods and tools.
     """
@@ -86,7 +86,7 @@ def ingredient_classifier(ingredient):
     # There are useful and non-useful categories. "Soup" is not useful because soup can contain meat or gluten,
     # i.e. "beef broth" is not vegitarian
 
-    ingredient_diet = {
+    diet = {
         'Name': ingredient['name'],
         'Contains' : {'Meat': None, 'Gluten': None, 'Lactose': None},
         'Healthy' : 2
@@ -113,7 +113,7 @@ def ingredient_classifier(ingredient):
             diet['Healthy'] = 1
     # Note: Baking Supplies, Ethnic Foods, Canned Foods, Soup indicate nothing about diet
 
-    nutrition.insert_one(ingredient_diet)
+    nutrition.insert_one(diet)
 
 # Testing functions
 if __name__ == '__main__':
