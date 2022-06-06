@@ -53,10 +53,13 @@ def parse_recipie(url):
         'Ingredients': ingredients,
         'Instructions': instructions
     }
-    pprint(recipie)
+    #pprint(recipie)
 
     # TODO: Duplicate detection
     recipies.insert_one(recipie)
+
+    return recipie
+
 
 def quantity_mod(ingredients, ratio):
     for ingredient in ingredients:
