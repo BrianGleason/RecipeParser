@@ -35,6 +35,11 @@ def parse_recipie(url):
         ingredient['quantity'] = tag.findChild("input")['data-init-quantity']
         ingredient['unit'] = tag.findChild("input")['data-unit']
         ingredient['type'] = tag.findChild("input")['data-store_location']
+
+        # TODO: Add identification passes to ingredients here
+        ingredient['contains'] = {'Meat': None, 'Gluten': None, 'Lactose': None}
+        ingredient['method'] = None
+
         ingredients.append(ingredient)
 
     instructions = []
@@ -70,6 +75,7 @@ def instruction_subject(instructions, allowed_targets, word_tags):
         verbs = [a[0] for a in nltk.pos_tag(nltk.word_tokenize(instruction)) if a[1] in word_tags]
         targets.append([a for a in verbs if a in allowed_targets])
     return targets
+
 
 def populate_diets():
     """Manually populate array with hardcoded values. Subject to change.
@@ -141,6 +147,8 @@ def get_all_urls():
                 "https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/",
                 "https://www.allrecipes.com/recipe/73303/mexican-rice-iii/"]
     return urllist
-# Testing functions
+
+# Example Call:
+# `python3 src/utils/utilities.py parse_recipie https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
 if __name__ == '__main__':
     globals()[sys.argv[1]](sys.argv[2])
