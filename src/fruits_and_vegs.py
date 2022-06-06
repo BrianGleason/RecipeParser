@@ -7,21 +7,22 @@ def get_food_item(url, food_file_path):
     recipe = parse_recipie(url)
     with open(food_file_path,"r") as food_file:
         lines = food_file.readlines()
-    outputlist = []
-    for ingredient in recipe["ingredients"]:
+    outputlist = set()
+    for ingredientdict in recipe["Ingredients"]:
+        ingredient = ingredientdict["name"]
         for line in lines:
-            stemmedingredient = ' '.join(map(ps.stem, ingredient.split()))
-            stemmedline = ' '.join(map(ps.stem, line.split()))
+            stemmedingredient = ' '.join(map(ps.stem, ingredient.lower().split()))
+            stemmedline = ' '.join(map(ps.stem, line.lower().split()))
             if(stemmedline in stemmedingredient):
-                outputlist.append(stemmedline)
+                outputlist.add(stemmedline)
     return outputlist
 
 def getveggies(url):
-    return get_food_item(url, "../formatted_ingredient_lists/formatted_veg_list.txt")
+    return get_food_item(url, "formatted_ingredient_lists/formatted_veg_list.txt")
 
 
 def getfruits(url):
-    return get_food_item(url, "../formatted_ingredient_lists/formatted_fruit_list.txt")
+    return get_food_item(url, "formatted_ingredient_lists/formatted_fruit_list.txt")
 
 if __name__ == '__main__':
     url = "https://www.allrecipes.com/recipe/73303/mexican-rice-iii/"

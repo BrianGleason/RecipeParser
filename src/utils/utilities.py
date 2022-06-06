@@ -56,7 +56,7 @@ def parse_recipie(url):
     #pprint(recipie)
 
     # TODO: Duplicate detection
-    recipies.insert_one(recipie)
+   # recipies.insert_one(recipie)
 
     return recipie
 
