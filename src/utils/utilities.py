@@ -1,10 +1,3 @@
-import pymongo
-client = pymongo.MongoClient('localhost:27017')
-db = client["cooking_data"]
-recipies = db["recipie_data"] # Contains recipies
-nutrition = db["nutrition_data"] # Contains food deitary information
-methods = db["method_methods"] # Contains methods and tools used in method
-
 import nltk
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -53,13 +46,8 @@ def parse_recipie(url):
         'Ingredients': ingredients,
         'Instructions': instructions
     }
-    #pprint(recipie)
-
-    # TODO: Duplicate detection
-   # recipies.insert_one(recipie)
 
     return recipie
-
 
 def quantity_mod(ingredients, ratio):
     for ingredient in ingredients:
@@ -72,7 +60,6 @@ def replace_ingredient(instructions, target, substitute):
         if target in instruction:
             instructions[i] = instruction.replace(target, substitute)
 
-# TODO Change to cooking method / tools allowed_targets to database
 def instruction_subject(instructions, allowed_targets, word_tags):
     """ Word identification used for finding cooking methods and tools.
     """
@@ -83,8 +70,8 @@ def instruction_subject(instructions, allowed_targets, word_tags):
         targets.append([a for a in verbs if a in allowed_targets])
     return targets
 
-def populate_db():
-    """Manually populate database with hardcoded values. Subject to change.
+def populate_diets():
+    """Manually populate array with hardcoded values. Subject to change.
     Hopefully all the arbitary choices can stay here.
 
     Usually populating comes in a separate step, but becuase the arbitary nature
@@ -98,61 +85,57 @@ def populate_db():
     Specifiers should have either a T/F in each contains key-value.
     """
 
-    nutrition.insert_one({
+    nutrition = []
+    nutrition.append({
         'Name': 'Herbs and Spices',
         'Type': 'Category',
         'Contains': {'Meat': False, 'Gluten': False, 'Lactose': False},
         'Healthy' : 3
     })
-    nutrition.insert_one({
+    nutrition.append({
         'Name': 'Produce',
         'Type': 'Category',
         'Contains': {'Meat': False, 'Gluten': False, 'Lactose': False},
         'Healthy': 3
     })
-    nutrition.insert_one({
+    nutrition.append({
         'Name': 'Beverages',
         'Type': 'Category',
         'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
         'Healthy': 2
     })
-    nutrition.insert_one({
+    nutrition.append({
         'Name': 'Natural/Organic Foods',
         'Type': 'Category',
         'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
         'Healthy': 3
     })
-    nutrition.insert_one({
+    nutrition.append({
         'Name': 'Basic Cooking Ingredients',
         'Type': 'Category',
         'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
         'Healthy': 2
     })
-    nutrition.insert_one({
+    nutrition.append({
         'Name': 'Meats, Fish and Seafood',
         'Type': 'Category',
         'Contains': {'Meat': True, 'Gluten': False, 'Lactose': False},
         'Healthy': 1
     })
-    nutrition.insert_one({
+    nutrition.append({
         'Name': 'Dairy, Eggs and Milk',
         'Type': 'Category',
         'Contains': {'Meat': False, 'Gluten': False, 'Lactose': True},
         'Healthy': 1
     })
 
-    # TODO: Add more cooking methods, tools
-    methods.insert_one({
-        'Name': 'Saute',
-        'References': ["saute", "brown", "sizzle"],
-        'Tools': ["pan", "spatula"]
-    })
+    return nutrition
 
 def get_all_urls():
     urllist =  ["https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
-                "https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/", 
-                "https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/", 
-                "https://www.allrecipes.com/recipe/228285/teriyaki-salmon/", 
+                "https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/",
+                "https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/",
+                "https://www.allrecipes.com/recipe/228285/teriyaki-salmon/",
                 "https://www.allrecipes.com/recipe/229293/korean-saewoo-bokkeumbap-shrimp-fried-rice/",
                 "https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/",
                 "https://www.allrecipes.com/recipe/73303/mexican-rice-iii/"]
