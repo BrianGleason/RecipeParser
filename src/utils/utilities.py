@@ -46,6 +46,7 @@ def parse_recipie(url):
         'Ingredients': ingredients,
         'Instructions': instructions
     }
+    pprint(recipie)
 
     return recipie
 
