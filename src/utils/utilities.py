@@ -148,6 +148,15 @@ def populate_db():
         'Tools': ["pan", "spatula"]
     })
 
+def get_all_urls():
+    urllist =  ["https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+                "https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/", 
+                "https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/", 
+                "https://www.allrecipes.com/recipe/228285/teriyaki-salmon/", 
+                "https://www.allrecipes.com/recipe/229293/korean-saewoo-bokkeumbap-shrimp-fried-rice/",
+                "https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/",
+                "https://www.allrecipes.com/recipe/73303/mexican-rice-iii/"]
+    return urllist
 # Testing functions
 if __name__ == '__main__':
     globals()[sys.argv[1]](sys.argv[2])
