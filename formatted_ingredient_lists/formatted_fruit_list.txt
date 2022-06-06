@@ -1,0 +1,113 @@
+Apple
+Apricot
+Avocado
+Banana
+Berries
+Acai Berry
+Barberry
+Bilberry
+Blackberry
+Blackcurrant
+Blueberry
+Boysenberry
+Cloudberry
+Cranberry
+Elderberry
+Goji berry
+Gooseberry
+Huckleberry
+Lingonberry
+Loganberry
+Marionberry
+Mulberry
+Raspberry
+Black Raspberry
+Golden Raspberry
+Red Raspberry
+Redcurrant
+Salmonberry
+Sea buckthorn Berry
+Serviceberry
+Strawberry
+Breadfruit
+Carob
+Cherry
+Citron
+Coconut
+Date
+Dragon Fruit
+Pitaya
+Durian
+Fig
+Ginger
+Grapes
+Currant
+Raisin
+Grapefruit
+Guava
+Jackfruit
+Jujube
+Kiwifruit
+Kumquat
+Lemon
+Lime
+Longan
+Loquat
+Lucuma
+Lychee
+Mamey Sapote
+Mango
+Mangosteen
+Melons
+Canary Melon
+Juan Canary Melon
+Cantaloupe/Muskmelon
+Casaba Melon
+Charentais
+Crenshaw
+Galia
+Honeydew
+Kiwano
+Horned Melon
+African Horned Cucumber
+Ogen
+Persian Melon
+Santa Claus Melon
+Christmas Melon
+Sharlyn
+Watermelon
+Nance
+Nectarine
+Noni
+Oranges
+Blood Orange
+Mandarin
+Clementine
+Satsuma Orange
+Navel Orange
+Seville Orange
+Valencia Orange
+Papaya
+Passion Fruit
+Peach
+Pear
+Asian Pear
+Persimmon
+Pineapple
+Plantain
+Plum
+Damson
+Prunes
+Pomegranate
+Pomelo
+Prickly Pear
+Cactus Pear
+Quince
+Rambutan
+Rhubarb
+Starfruit
+Tamarillo
+Tamarind
+Tangerine
+Tangelo
+Tomato
