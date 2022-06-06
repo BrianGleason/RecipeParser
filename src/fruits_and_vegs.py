@@ -17,6 +17,7 @@ def get_food_item(url, food_file_path):
                 outputlist.add(stemmedline)
     return outputlist
 
+#citation: list of fruits and vegetables from https://vegetablesfruitsgrains.com/
 def getveggies(url):
     return get_food_item(url, "formatted_ingredient_lists/formatted_veg_list.txt")
 
