@@ -1,0 +1,114 @@
+{
+    "proteins": 
+    {
+        "italian sausage":
+        {
+            "vegetarian": "False",
+            "cooking methods": ["bake", "fry", "grill", "steam"]
+        },
+        "ground beef":
+        {
+            "vegetarian": "False",
+            "cooking methods": ["bake", "fry", "grill", "steam"]
+        },
+        "chicken":
+        {
+            "vegetarian": "False",
+            "cooking methods": ["bake", "fry", "grill", "steam"]
+        }
+    },
+    "vegetables": 
+    {
+        "tomato":
+        {
+            "vegetarian": "True",
+            "preparation methods": ["slice", "dice"],
+            "cooking methods": ["bake", "fry", "grill", "steam", "saute"]
+        },
+        "onion":
+        {
+            "vegetarian": "True",
+            "preparation methods": ["slice", "dice"],
+            "cooking methods": ["bake", "fry", "grill", "steam", "saute", "caramelize"]
+        },
+        "mushrooms":
+        {
+            "vegetarian": "True",
+            "preparation methods": ["slice", "dice"],
+            "cooking methods": ["bake", "fry", "grill", "steam"]
+        },
+        "brocolli rabe":
+        {
+            "vegetarian": "True",
+            "preparation methods": ["chop", "slice"],
+            "cooking methods": ["blanch", "steam", "boil"]
+        }
+    },
+    "carbs":
+    {
+        "spaghetti":
+        {
+            "vegetarian": "True",
+            "cooking methods": ["boil"]
+        },
+        "penne pasta":
+        {
+            "vegetarian": "True",
+            "cooking methods": ["boil"]
+        }
+    },
+    "herbs and seasonings":
+    {
+        "garlic":
+        {
+            "vegetarian": "True",
+            "preparation methods": ["dice", "crush"],
+            "cooking methods": ["saute", "fry", "bake"]
+        },
+        "basil":
+        {
+            "vegetarian": "True"
+        },
+        "oregano":
+        {
+            "vegetarian": "True"
+        },
+        "rosemary":
+        {
+            "vegetarian": "True"
+        },
+        "parmesian":
+        {
+            "vegetarian": "True",
+            "preparation methods": ["grate", "shred"]
+        },
+        "salt":
+        {
+            "vegetarian": "True"
+        },
+        "pepper":
+        {
+            "vegetarian": "True"
+        }
+    },
+    "sauces":
+    {
+        "tomato sauce":
+        {
+            "vegetarian": "True"
+        },
+        "meat sauce":
+        {
+            "vegetarian": "False"
+        },
+        "alfredo sauce":
+        {
+            "vegetarian": "True"
+        },
+        "pesto":
+        {
+            "vegetarian": "True"
+        }
+    }
+
+}
