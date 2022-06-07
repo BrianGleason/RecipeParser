@@ -8,13 +8,16 @@ from bs4 import BeautifulSoup
 import urllib.parse
 import urllib.request
 
+import requests
+_usda_key = "KCB7Ijl50I1oHVbmgjD6VGguegsxW34dKMwtfPt1"
+
 from pprint import pprint
 
 import sys
 import string
 
 def parse_recipie(url):
-    """Crawl url and insert recipie data into database collection.
+    """Crawl url and return recipie data
     """
     req = urllib.request.Request(url)
     req.add_header('Cookie', 'euConsent=true')
@@ -57,6 +60,16 @@ def parse_recipie(url):
     # pprint(recipie)
 
     return recipie
+
+def query_fooddata(ingredient):
+    """Query USDA FoodData Central with ingredient name.
+    """
+    response = requests.post(
+        r'https://api.nal.usda.gov/fdc/v1/search',
+        params = {'api_key': _usda_key},
+        json = {'generalSearchInput': ingredient["name"]}
+    )
+    return response.json()
 
 def quantity_mod(ingredients, ratio):
     for ingredient in ingredients:
