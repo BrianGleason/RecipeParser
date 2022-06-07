@@ -54,7 +54,7 @@ def parse_recipie(url):
         'Instructions': instructions
     }
     recipie['Substeps'] = parse_substeps(recipie['Instructions'])
-    pprint(recipie)
+    # pprint(recipie)
 
     return recipie
 
@@ -66,8 +66,15 @@ def quantity_mod(ingredients, ratio):
 
 def replace_ingredient(instructions, target, substitute):
     for i, instruction in enumerate(instructions):
-        if target in instruction:
-            instructions[i] = instruction.replace(target, substitute)
+        lowered = instruction.lower()
+        if target in lowered:
+            instructions[i] = lowered.replace(target, substitute)
+
+def replace_ingredient_list(ingredients, target, substitute):
+    for i, ingredient in enumerate(ingredients):
+        lowered = ingredient['name'].lower()
+        if target in lowered:
+            ingredients[i]['name'] = lowered.replace(target, substitute)
 
 def instruction_subject(instructions, allowed_targets, word_tags):
     """ Word identification used for finding cooking methods and tools.
