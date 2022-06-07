@@ -100,68 +100,6 @@ def find_substep(index, pos_tagged):
     substring.append(".")
     return substring
 
-
-def populate_diets():
-    """Manually populate array with hardcoded values. Subject to change.
-    Hopefully all the arbitary choices can stay here.
-
-    Usually populating comes in a separate step, but becuase the arbitary nature
-    of choosing certain values (like healthy scores) I've manually added code here.
-
-    There are useful and non-useful categories. "Soup" is not useful because soup can
-     contain meat or gluten, i.e. "beef broth" is not vegitarian.
-    Baking Supplies, Ethnic Foods, Canned Foods, Soup indicate nothing about diet
-
-    This means there are "Category" types and "Specifier" types.
-    Specifiers should have either a T/F in each contains key-value.
-    """
-
-    nutrition = []
-    nutrition.append({
-        'Name': 'Herbs and Spices',
-        'Type': 'Category',
-        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': False},
-        'Healthy' : 3
-    })
-    nutrition.append({
-        'Name': 'Produce',
-        'Type': 'Category',
-        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': False},
-        'Healthy': 3
-    })
-    nutrition.append({
-        'Name': 'Beverages',
-        'Type': 'Category',
-        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
-        'Healthy': 2
-    })
-    nutrition.append({
-        'Name': 'Natural/Organic Foods',
-        'Type': 'Category',
-        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
-        'Healthy': 3
-    })
-    nutrition.append({
-        'Name': 'Basic Cooking Ingredients',
-        'Type': 'Category',
-        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': None},
-        'Healthy': 2
-    })
-    nutrition.append({
-        'Name': 'Meats, Fish and Seafood',
-        'Type': 'Category',
-        'Contains': {'Meat': True, 'Gluten': False, 'Lactose': False},
-        'Healthy': 1
-    })
-    nutrition.append({
-        'Name': 'Dairy, Eggs and Milk',
-        'Type': 'Category',
-        'Contains': {'Meat': False, 'Gluten': False, 'Lactose': True},
-        'Healthy': 1
-    })
-
-    return nutrition
-
 def get_all_urls():
     urllist =  ["https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
                 "https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/",

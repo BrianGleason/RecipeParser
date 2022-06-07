@@ -1,0 +1,65 @@
+{
+  "herbs": {
+    "Reference": "Herbs and Spices",
+    "Contains": {
+      "Meat": "False",
+      "Gluten": "False",
+      "Lactose": "False"
+    },
+    "Healthy" : 3
+  },
+  "produce": {
+    "Reference": "Produce",
+    "Contains": {
+      "Meat": "False",
+      "Gluten": "False",
+      "Lactose": "False"
+    },
+    "Healthy" : 3
+  },
+  "beverages": {
+    "Reference": "Beverages",
+    "Contains": {
+      "Meat": "False",
+      "Gluten": "False",
+      "Lactose": "None"
+    },
+    "Healthy" : 3
+  },
+  "organic": {
+    "Reference": "Natural/Organic Foods",
+    "Contains": {
+      "Meat": "False",
+      "Gluten": "False",
+      "Lactose": "None"
+    },
+    "Healthy" : 3
+  },
+  "basic": {
+    "Reference": "Basic Cooking Ingredients",
+    "Contains": {
+      "Meat": "False",
+      "Gluten": "False",
+      "Lactose": "None"
+    },
+    "Healthy" : 2
+  },
+  "meats": {
+    "Reference": "Basic Cooking Ingredients",
+    "Contains": {
+      "Meat": "True",
+      "Gluten": "False",
+      "Lactose": "False"
+    },
+    "Healthy" : 1
+  },
+  "dairy": {
+    "Reference": "Dairy, Eggs and Milk",
+    "Contains": {
+      "Meat": "False",
+      "Gluten": "False",
+      "Lactose": "True"
+    },
+    "Healthy" : 1
+  }
+}
