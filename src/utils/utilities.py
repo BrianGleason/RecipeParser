@@ -62,14 +62,26 @@ def parse_recipie(url):
     return recipie
 
 def query_fooddata(ingredient):
-    """Query USDA FoodData Central with ingredient name.
+    """Query USDA FoodData Central with ingredient name, returns relevant dietary information
+    Note: long queries usually result in inaccurate results.
     """
     response = requests.post(
         r'https://api.nal.usda.gov/fdc/v1/search',
         params = {'api_key': _usda_key},
         json = {'generalSearchInput': ingredient["name"]}
     )
-    return response.json()
+
+    # Save only top query
+    food_data = response.json()['foods'][0]
+
+    diet = {
+        'Category': food_data.get('foodCategory', ''),
+        'Score': food_data.get('score', ''),
+        'Serving': food_data.get('servingSize', ''),
+        'Unit': food_data.get('servingSizeUnit', '')
+    }
+
+    return diet
 
 def quantity_mod(ingredients, ratio):
     for ingredient in ingredients:
