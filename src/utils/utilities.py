@@ -54,7 +54,7 @@ def parse_recipie(url):
         'Instructions': instructions
     }
     recipie['Substeps'] = parse_substeps(recipie['Instructions'])
-    # pprint(recipie)
+    pprint(recipie)
 
     return recipie
 
@@ -111,17 +111,6 @@ def get_all_urls():
                 "https://www.allrecipes.com/recipe/73303/mexican-rice-iii/"]
     return urllist
 
-def get_times(instruction):
-    timeset = {"second","minute","hour","seconds","minutes","hours"}
-    iwords = instruction.split()
-    res = []
-    for i, word in enumerate(iwords):
-        word = no_punctuation(word.lower().strip())
-        if word in timeset and i>0:
-            if '-' in word:
-                word = word.rsplit('-', 1)[1]
-            res.append(f'{iwords[i - 1]} {word}')
-    return res
 
 def no_punctuation(s):
     return s.translate(str.maketrans('', '', string.punctuation))
