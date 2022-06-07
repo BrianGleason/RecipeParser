@@ -84,8 +84,9 @@ def parse_substeps(instructions):
         substep_list = []
         text = nltk.word_tokenize(step)
         pos_tagged = nltk.pos_tag(text)
-        for index in range(len(pos_tagged)):
-            if pos_tagged[index][0] == "." and index + 1 < len(pos_tagged):
+        substep_list.append(find_substep(0, pos_tagged))
+        for index in range(1, len(pos_tagged)):
+            if (pos_tagged[index][0] == ".") and index + 1 < len(pos_tagged):
                 substep_list.append(find_substep(index + 1, pos_tagged))
         substep_matrix.append(substep_list)
     return substep_matrix
@@ -96,6 +97,7 @@ def find_substep(index, pos_tagged):
     while index + 1 < len(pos_tagged) and pos_tagged[index][0] != ".":
         substring.append(pos_tagged[index][0])
         index += 1
+    substring.append(".")
     return substring
 
 
