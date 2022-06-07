@@ -1,3 +1,4 @@
+from ast import parse
 import nltk
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -51,6 +52,7 @@ def parse_recipie(url):
         'Ingredients': ingredients,
         'Instructions': instructions
     }
+    recipie['Substeps'] = parse_substeps(recipie['Instructions'])
     pprint(recipie)
 
     return recipie
@@ -75,6 +77,26 @@ def instruction_subject(instructions, allowed_targets, word_tags):
         verbs = [a[0] for a in nltk.pos_tag(nltk.word_tokenize(instruction)) if a[1] in word_tags]
         targets.append([a for a in verbs if a in allowed_targets])
     return targets
+
+def parse_substeps(instructions):
+    substep_matrix = []
+    for step in instructions:
+        substep_list = []
+        text = nltk.word_tokenize(step)
+        pos_tagged = nltk.pos_tag(text)
+        for index in range(len(pos_tagged)):
+            if pos_tagged[index][0] == "." and index + 1 < len(pos_tagged):
+                substep_list.append(find_substep(index + 1, pos_tagged))
+        substep_matrix.append(substep_list)
+    return substep_matrix
+
+def find_substep(index, pos_tagged):
+    substring = [pos_tagged[index][0]]
+    index += 1
+    while index + 1 < len(pos_tagged) and pos_tagged[index][0] != ".":
+        substring.append(pos_tagged[index][0])
+        index += 1
+    return substring
 
 
 def populate_diets():
