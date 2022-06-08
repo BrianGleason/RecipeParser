@@ -1,7 +1,11 @@
 # Example Usage
 
-`cd src && chmod +x interface.py`
-`./interface.py https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
+```
+cd src && chmod +x interface.py
+./interface.py https://www.allrecipes.com/recipe/228285/teriyaki-salmon/
+```
+
+Then enter the desired transform. No CLI options are taken as input.
 
 # Presentations
 
