@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 from utils.utilities import parse_recipe, print_recipe
 import sys

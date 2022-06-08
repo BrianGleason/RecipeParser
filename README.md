@@ -1,4 +1,11 @@
-Presentations: In your zip file submission, all groups must include a short video (maximum of 10 minutes) named "demo_video" demonstrating your solution.
+# Example Usage
+
+`cd src && chmod +x interface.py`
+`./interface.py https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
+
+# Presentations
+
+In your zip file submission, all groups must include a short video (maximum of 10 minutes) named "demo_video" demonstrating your solution.
 
 # Demo Video Requirements
 
