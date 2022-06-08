@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from utils.utilities import parse_recipe, print_recipe
+from quantity import quantity_mod
 import sys
 from termcolor import colored
 import shutil
@@ -20,15 +21,17 @@ print("To non-vegitarian (Enter 2)")
 print("To healthy (Enter 3)")
 print("To unhealthy (Enter 4)")
 print("To Italian (Enter 5)")
+print("Change serving amount (Enter 6)")
+print("To lactose-free (Enter 7)")
 
 while True:
     try:
-        transform = int(input('Your choice (1,2,3,4,5): '))
-        assert 0 < transform < 6
+        transform = int(input('Your choice (1-7): '))
+        assert 0 < transform < 8
     except ValueError:
         print("Please enter an integer.")
     except AssertionError:
-        print("Please enter an integer 1-5")
+        print("Please enter an integer 1-7")
     else:
         break
 
@@ -47,6 +50,12 @@ elif transform == 4:
 elif transform == 5:
     predicate = "Italian"
     # TODO: Transform to Italian
+elif transform == 6:
+    predicate = "Smaller/Larger"
+    recipe['Ingredients'] = quantity_mod(recipe['Ingredients'])
+elif transform == 7:
+    predicate = "Lactose-free"
+    # TODO: Transform to lactose free
 
 recipe['Name'] = predicate + " " + recipe['Name']
 print_recipe(recipe, termsize, 'green', 'blue')
