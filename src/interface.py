@@ -48,10 +48,10 @@ while True:
 
 if transform == 1:
     predicate = "Vegitarian"
-    to_vegetarian(recipe)
+    #to_vegetarian(recipe)
 elif transform == 2:
     predicate = "Non-vegitarian"
-    from_vegetarian(recipe)
+    #from_vegetarian(recipe)
 elif transform == 3:
     predicate = "Healthy"
     # TODO: Transforrm to healthy
