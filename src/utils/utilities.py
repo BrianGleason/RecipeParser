@@ -25,16 +25,19 @@ def recipe_interface(url):
     Example Call:
     `python3 src/utils/utilities.py recipe_interface https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
     """
-    termsize = shutil.get_terminal_size().columns
     recipe = parse_recipe(url)
-    print(colored(recipe['Name'].center(termsize),'green'))
-    print_recipe(recipe, termsize, 'green', 'blue')
+    print_recipe(recipe, 'green', 'blue')
 
-def print_recipe(recipe, termsize, primary_color, secondary_color):
+def print_recipe(recipe, primary_color, secondary_color):
+    termsize = shutil.get_terminal_size().columns
+
+    print(colored(recipe['Name'].center(termsize),primary_color))
+
     print(colored('Ingredients'.center(termsize),primary_color))
     for ingredient in recipe['Ingredients']:
         statement = ingredient['quantity'] + " " + ingredient['unit'] + " " + ingredient['name']
         print(colored(statement, secondary_color))
+
     print(colored('Instructions'.center(termsize),primary_color))
     for instruction in recipe['Instructions']:
         print(colored(instruction, secondary_color))
