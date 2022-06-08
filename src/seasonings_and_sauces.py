@@ -16,7 +16,6 @@ def get_food_item(recipe, food_file_path, key):
                 outputlist.add(line)
             if ingredient in line:
                 outputlist.add(ingredient)
-    print(outputlist)
     return outputlist
 
 #citation: list of fruits and vegetables from https://vegetablesfruitsgrains.com/

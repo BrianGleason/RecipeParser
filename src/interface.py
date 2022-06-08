@@ -5,8 +5,11 @@ import sys
 from termcolor import colored
 import shutil
 import validators
+from italian_cuisine_substitution import italian_cuisine_substitution
 
 termsize = shutil.get_terminal_size().columns
+if len(sys.argv) < 2:
+    sys.exit('Must provide allrecipes url as argument')
 url = sys.argv[1]
 if not validators.url(url):
     sys.exit('Not a valid URL')
@@ -25,6 +28,10 @@ while True:
     try:
         transform = int(input('Your choice (1,2,3,4,5): '))
         assert 0 < transform < 6
+
+        if transform == 5: italian_cuisine_substitution(recipe, url)
+        print_recipe(recipe, termsize, 'green', 'blue')
+
     except ValueError:
         print("Please enter an integer.")
     except AssertionError:

@@ -40,21 +40,14 @@ def process_name(name, name_split, type_list, replace_dict, substitute_list, bul
     return False
 
 
-def main():
+def italian_cuisine_substitution(recipe, url):
     cooking_methods_tools_data = open(os.path.dirname(__file__) + f'/../lists/primary_cooking_methods_tools.json')
     italian_cuisine_data = open(os.path.dirname(__file__) + f'/../lists/italian_cuisine_ingredients.json')
+    cuisine_data = open(os.path.dirname(__file__) + f'/../lists/cuisine_list.json')
+    cuisine_dict = json.load(cuisine_data)
     cmt_dict = json.load(cooking_methods_tools_data)
     italian_dict = json.load(italian_cuisine_data)
 
-
-    args = sys.argv
-    print(args)
-    if len(args) != 2:
-        print('must provide 1 additional arguments: allrecipes url')
-        return
-    url = args[1]
-
-    recipe = parse_recipe(url)
     ingredients = recipe['Ingredients']
     instructions = recipe['Instructions']
     vegetable_list = getveggies(url)
@@ -80,9 +73,9 @@ def main():
 
     replace_dict = dict()
 
-    print('BEFORE ITALIAN TRANSLATION:')
-    for step in instructions:
-        print(step)
+    #print('BEFORE ITALIAN TRANSLATION:')
+    #for step in instructions:
+    #    print(step)
     for ingredient in ingredients:
         name = ingredient['name']
         name_split = name.split(" ")
@@ -99,20 +92,52 @@ def main():
             pass
         '''
         # if is grain, check primary cooking method
-
+    # combine instances of same sauces, adjust serving size
+    
     sorted_replace_dict = {}
     for k in sorted(replace_dict, key=len, reverse=True):
         sorted_replace_dict[k] = replace_dict[k]
     for key, value in sorted_replace_dict.items():
         replace_ingredient(instructions, key, value)
         replace_ingredient_list(ingredients, key, value)
-    print(sorted_replace_dict)
-    print('AFTER ITALIAN TRANSLATION')
-    for step in recipe['Instructions']:
-        print(step)
-    for ingredient in recipe['Ingredients']:
-        print(ingredient)
-    print(recipe)
+    
+    # replace all duplicate ingredients from substitutions
+    seen_ingredients = set()
+    for index in range(len(ingredients)):
+        if index + 1 >= len(ingredients): break
+        ingredient = ingredients[index]
+        value = ingredient['name']
+        if value in seen_ingredients:
+            del ingredients[index]
+        else:
+            seen_ingredients.add(value)
+    # set sauce amout to reasonable amount for serving size
+    for ingredient in ingredients:
+        if ingredient['name'] in substitute_sauce_list:
+            ingredient['quantity'] = str(recipe['ServingSize'] * float(italian_dict['sauces'][ingredient['name']]['single serving quantity']))
+            ingredient['unit'] = italian_dict['sauces'][ingredient['name']]['unit']
+    # change cuisine of title
+    flag = False
+    for word in recipe['Name'].split(" "):
+        if word.lower() in cuisine_dict['Cuisines']:
+            recipe['Name'] = recipe['Name'].replace(word, "")
+            flag = True
+
+    if flag: 
+        recipe['Name'] = 'Italian' + recipe['Name'] + "Cuisine Swapped"
+    else:
+        recipe['Name'] = 'Italian ' + recipe['Name'] + " (Cuisine Swapped)"
+
+def main():
+    args = sys.argv
+    print(args)
+    if len(args) != 2:
+        print('must provide 1 additional arguments: allrecipes url')
+        return
+    url = args[1]
+
+    recipe = parse_recipe(url)
+    italian_cuisine_substitution(recipe, url)
 
 
 main()
