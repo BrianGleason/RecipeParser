@@ -9,7 +9,7 @@ import validators
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 
 termsize = shutil.get_terminal_size().columns
-print(colored("Enter an All Recipes URL:", 'green'))
+print(colored("Enter an All Recipes URL:".center(termsize), 'green'))
 while True:
     try:
         url = input('URL: ')
@@ -29,16 +29,17 @@ print("To healthy (Enter 3)")
 print("To unhealthy (Enter 4)")
 print("To Italian (Enter 5)")
 print("Change serving amount (Enter 6)")
-print("To lactose-free (Enter 7)")
+print("Change cooking method (Enter 7)")
+print("To lactose-free (Enter 8)")
 
 while True:
     try:
-        transform = int(input('Your choice (1-7): '))
-        assert 0 < transform < 8
+        transform = int(input('Your choice (1-8): '))
+        assert 0 < transform < 9
     except ValueError:
         print("Please enter an integer.")
     except AssertionError:
-        print("Please enter an integer 1-7")
+        print("Please enter an integer 1-8")
     else:
         break
 
@@ -61,6 +62,9 @@ elif transform == 6:
     predicate = "Smaller/Larger"
     recipe['Ingredients'] = quantity_mod(recipe['Ingredients'])
 elif transform == 7:
+    predicate "Method Swapped"
+    # TODO: Change cooking method
+elif transform == 8:
     predicate = "Lactose-free"
     # TODO: Transform to lactose free
 
