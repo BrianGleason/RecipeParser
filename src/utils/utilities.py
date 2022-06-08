@@ -17,6 +17,7 @@ import os
 import shutil
 import string
 import sys
+import re
 from pprint import pprint
 
 from termcolor import colored
@@ -38,7 +39,8 @@ def print_recipe(recipe, termsize, primary_color, secondary_color):
 
     print(colored('Ingredients'.center(termsize),primary_color))
     for ingredient in recipe['Ingredients']:
-        statement = ingredient['quantity'] + " " + ingredient['unit'] + " " + ingredient['name']
+        statement = re.sub(' +', ' ', ingredient['quantity'] + " " + ingredient['unit']\
+         + " " + ingredient['prep'] + " " + ingredient['name'])
         print(colored(statement, secondary_color))
 
     print(colored('Instructions'.center(termsize),primary_color))
