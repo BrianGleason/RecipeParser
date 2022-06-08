@@ -9,7 +9,6 @@ import validators
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 from italian_cuisine_substitution import italian_cuisine_substitution
 
-
 termsize = shutil.get_terminal_size().columns
 print(colored("Enter an All Recipes URL:".center(termsize), 'green'))
 while True:

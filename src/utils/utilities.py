@@ -44,8 +44,9 @@ def print_recipe(recipe, termsize, primary_color, secondary_color):
         print(colored(statement, secondary_color))
 
     print(colored('Instructions'.center(termsize),primary_color))
-    for instruction in recipe['Instructions']:
-        print(colored(instruction, secondary_color))
+    for i, instruction in enumerate(recipe['Instructions']):
+        statement = "Step " + str(i + 1) + ": " + instruction
+        print(colored(statement, secondary_color), end="\n\n")
 
 def parse_recipe(url):
     """Crawl url and return recipe data
