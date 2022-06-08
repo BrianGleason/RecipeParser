@@ -32,6 +32,8 @@ def recipe_interface(url):
     """
     termsize = shutil.get_terminal_size().columns
     recipe = parse_recipe(url)
+    print("Printing full recipe information:")
+    pprint(recipe)
     print_recipe(recipe, termsize, 'green', 'blue')
 
 def print_recipe(recipe, termsize, primary_color, secondary_color):
@@ -83,6 +85,13 @@ def parse_recipe(url):
 
         # TODO: Add identification passes to ingredients here
         ingredient['contains'] = {'Meat': None, 'Gluten': None, 'Lactose': None}
+        ingredient['healthy'] = None
+
+        # Unhealthy Identification
+        healthy_data = open(os.path.dirname(__file__) + f'/../../lists/healthy_alternatives.json', encoding='utf-8')
+        healthy_dict = json.load(healthy_data)
+        if any(food in ingredient['name'] for food in healthy_dict.keys()):
+            ingredient['healthy'] = False
 
         # Meat Identification
         protein_data = open(os.path.dirname(__file__) + f'/../../lists/formatted_proteins_list.json', encoding='utf-8')
