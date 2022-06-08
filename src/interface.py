@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from utils.utilities import parse_recipe, print_recipe
 import sys
@@ -12,14 +12,14 @@ if not validators.url(url):
     sys.exit('Not a valid URL')
 
 recipe = parse_recipe(url)
-print_recipe(recipe, termsize, 'green', 'blue')
+print_recipe(recipe, termsize, 'green', 'red')
 
 print(colored("What transformation do you want to perform? Avalable options:".center(termsize),'green'))
-print(colored("To vegitarian (Enter 1)",'blue'))
-print(colored("To non-vegitarian (Enter 2)",'red'))
-print(colored("To healthy (Enter 3)",'blue'))
-print(colored("To unhealthy (Enter 4)",'red'))
-print(colored("To Italian (Enter 5)",'blue'))
+print("To vegitarian (Enter 1)")
+print("To non-vegitarian (Enter 2)")
+print("To healthy (Enter 3)")
+print("To unhealthy (Enter 4)")
+print("To Italian (Enter 5)")
 
 while True:
     try:
@@ -32,4 +32,21 @@ while True:
     else:
         break
 
-# TODO: Add transform calls here, based on user input
+if transform == 1:
+    predicate = "Vegitarian"
+    # TODO: Transform to vegitarian
+elif transform == 2:
+    predicate = "Non-vegitarian"
+    # TODO: Transform to non-vegitarian
+elif transform == 3:
+    predicate = "Healthy"
+    # TODO: Transforrm to healthy
+elif transform == 4:
+    predicate = "Unhealthy"
+    # TODO: Transform to unhealthy
+elif transform == 5:
+    predicate = "Italian"
+    # TODO: Transform to Italian
+
+recipe['Name'] = predicate + " " + recipe['Name']
+print_recipe(recipe, termsize, 'green', 'blue')
