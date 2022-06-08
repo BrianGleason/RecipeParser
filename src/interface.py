@@ -38,9 +38,7 @@ while True:
     try:
         transform = int(input('Your choice (1-8): '))
         assert 0 < transform < 9
-        if transform == 5: 
-            italian_cuisine_substitution(recipe, url)
-            print_recipe(recipe, termsize, 'green', 'blue')
+        
     except ValueError:
         print("Please enter an integer.")
     except AssertionError:
@@ -64,8 +62,9 @@ elif transform == 4:
     sys.exit('Unsupported')
 elif transform == 5:
     predicate = "Italian"
-    # TODO: Transform to Italian
-    sys.exit('Unsupported')
+    if transform == 5: 
+        italian_cuisine_substitution(recipe, url)
+        print_recipe(recipe, termsize, 'green', 'blue')
 elif transform == 6:
     predicate = "Smaller/Larger"
     recipe['Ingredients'] = quantity_mod(recipe['Ingredients'])
