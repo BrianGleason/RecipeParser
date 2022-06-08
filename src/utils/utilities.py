@@ -26,6 +26,10 @@ def parse_recipie(url):
     title = soup.find('title').string
     ingredient_tags = soup.findAll("li", {"class": "ingredients-item"})
     instruction_tags = soup.findAll("li", {"class": "subcontainer instructions-section-item"})
+    potential_serving_size = soup.findAll("div", {"class": "recipe-adjust-servings__original-serving elementFont__fine"})[0].string
+    potential_serving_sizes = [int(s) for s in potential_serving_size.split() if s.isdigit()]
+    serving_size = None
+    if len(potential_serving_sizes) > 0: serving_size = potential_serving_sizes[0]
 
     ingredients = []
     for tag in ingredient_tags:
@@ -54,7 +58,8 @@ def parse_recipie(url):
     recipie = {
         'Name': title,
         'Ingredients': ingredients,
-        'Instructions': instructions
+        'Instructions': instructions,
+        'ServingSize' : serving_size
     }
     recipie['Substeps'] = parse_substeps(recipie['Instructions'])
     # pprint(recipie)
@@ -94,13 +99,8 @@ def replace_ingredient(instructions, target, substitute):
         lowered = instruction.lower()
         if target in lowered:
             instructions[i] = lowered.replace(target, substitute)
-<<<<<<< HEAD
-        
-def replace_ingredient_list(ingredients, target, substitute):
-=======
 
 def replace_ingredient_list(ingredients, target, substitute, changedkey=None):
->>>>>>> 2a5cacf8ff0ae36e3ba14df30a469cf3749cc43b
     for i, ingredient in enumerate(ingredients):
         lowered = ingredient['name'].lower()
         if target in lowered:

@@ -1,8 +1,10 @@
 from dataclasses import replace
+from operator import sub
 import sys
 import os
 import re
 import json
+import random
 from utils.utilities import parse_recipie, get_all_urls, replace_ingredient, replace_ingredient_list
 from fruits_and_vegs import getfruits, getveggies
 from seasonings_and_sauces import get_herbs_spices, get_sauces
@@ -19,8 +21,9 @@ def list_not_in_word(list, word):
             return True
     return False
 
-def process_name(name, name_split, type_list, replace_dict, substitute_list):
+def process_name(name, name_split, type_list, replace_dict, substitute_list, bulk_replace=False):
     if substitute_list == []: return
+
     flag = False
     if name in type_list:
         replace_dict[name] = substitute_list[0]
@@ -32,7 +35,7 @@ def process_name(name, name_split, type_list, replace_dict, substitute_list):
             added = (type, substitute_list[0])
             if substitute_list == []: return
     if flag: 
-        substitute_list.pop(0)
+        if not bulk_replace: substitute_list.pop(0)
         return True
     return False
 
@@ -60,6 +63,7 @@ def main():
     substitute_vegetable_list = list(italian_dict['vegetables'].keys())
     substitute_seasoning_list = list(italian_dict['herbs and seasonings'].keys())
     substitute_sauce_list = list(italian_dict['sauces'].keys())
+    random.shuffle(substitute_sauce_list)
     for ingredient in ingredients:
         if ingredient['name'] in substitute_vegetable_list:
             substitute_vegetable_list.remove(ingredient['name'])
@@ -85,19 +89,16 @@ def main():
 
         if name not in all_italian_ingredients_list:
 
-            if process_name(name, name_split, vegetable_list, replace_dict, substitute_vegetable_list): continue
-            if process_name(name, name_split, seasonings_list, replace_dict, substitute_seasoning_list): continue
-            if process_name(name, name_split, sauces_list, replace_dict, substitute_sauce_list): continue
+            if process_name(name, name_split, vegetable_list, replace_dict, substitute_vegetable_list, bulk_replace=False): continue
+            if process_name(name, name_split, seasonings_list, replace_dict, substitute_seasoning_list, bulk_replace=False): continue
+            if process_name(name, name_split, sauces_list, replace_dict, substitute_sauce_list, bulk_replace=True): continue
         '''
         if is_protein(ingredient):
-            pass
-        if is_sauce(ingredient):
-            pass
-        if is_seasoning(ingredient):
             pass
         if is_grain(ingredient):
             pass
         '''
+        # if is grain, check primary cooking method
 
     sorted_replace_dict = {}
     for k in sorted(replace_dict, key=len, reverse=True):
@@ -109,6 +110,9 @@ def main():
     print('AFTER ITALIAN TRANSLATION')
     for step in recipe['Instructions']:
         print(step)
+    for ingredient in recipe['Ingredients']:
+        print(ingredient)
+    print(recipe)
 
 
 main()
