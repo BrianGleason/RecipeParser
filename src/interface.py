@@ -5,11 +5,18 @@ import sys
 from termcolor import colored
 import shutil
 import validators
+from vegitarian_substitution import to_vegetarian, from_vegetarian
 
 termsize = shutil.get_terminal_size().columns
-url = sys.argv[1]
-if not validators.url(url):
-    sys.exit('Not a valid URL')
+print(colored("Enter an All Recipes URL:", 'green'))
+while True:
+    try:
+        url = input('URL: ')
+        assert validators.url(url)
+    except:
+        print("Please enter a valid All Recipes URL.")
+    else:
+        break
 
 recipe = parse_recipe(url)
 print_recipe(recipe, termsize, 'green', 'red')
@@ -34,10 +41,10 @@ while True:
 
 if transform == 1:
     predicate = "Vegitarian"
-    # TODO: Transform to vegitarian
+    to_vegetarian(recipe)
 elif transform == 2:
     predicate = "Non-vegitarian"
-    # TODO: Transform to non-vegitarian
+    from_vegetarian(recipe)
 elif transform == 3:
     predicate = "Healthy"
     # TODO: Transforrm to healthy
