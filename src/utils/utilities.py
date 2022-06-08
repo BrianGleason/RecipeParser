@@ -18,12 +18,17 @@ import shutil
 import sys
 import string
 
-def interface(url):
+def recipe_interface(url):
+    """Testing interface for recipe collection. Use the separate interface.py for a more
+    robust solution with support for transforms.
+
+    Example Call:
+    `python3 src/utils/utilities.py recipe_interface https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
+    """
     termsize = shutil.get_terminal_size().columns
     recipe = parse_recipe(url)
+    print(colored(recipe['Name'].center(termsize),'green'))
     print_recipe(recipe, termsize, 'green', 'blue')
-
-    # TODO: Add transform calls here, add transform argument
 
 def print_recipe(recipe, termsize, primary_color, secondary_color):
     print(colored('Ingredients'.center(termsize),primary_color))
@@ -176,7 +181,5 @@ def get_all_urls():
 def no_punctuation(s):
     return s.translate(str.maketrans('', '', string.punctuation))
 
-# Example Call:
-# `python3 src/utils/utilities.py parse_recipe https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
 if __name__ == '__main__':
     globals()[sys.argv[1]](sys.argv[2])
