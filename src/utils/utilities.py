@@ -1,22 +1,27 @@
 from ast import parse
+
 import nltk
+
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
-
-from bs4 import BeautifulSoup
 
 import urllib.parse
 import urllib.request
 
 import requests
+from bs4 import BeautifulSoup
+
 _usda_key = "KCB7Ijl50I1oHVbmgjD6VGguegsxW34dKMwtfPt1"
 
-from pprint import pprint
-from termcolor import colored
+import json
+import os
 import shutil
-
-import sys
 import string
+import sys
+from pprint import pprint
+
+from termcolor import colored
+
 
 def recipe_interface(url):
     """Testing interface for recipe collection. Use the separate interface.py for a more
@@ -76,8 +81,20 @@ def parse_recipe(url):
 
         # TODO: Add identification passes to ingredients here
         ingredient['contains'] = {'Meat': None, 'Gluten': None, 'Lactose': None}
-        ingredient['method'] = None
 
+        # Meat Identification
+        protein_data = open(os.path.dirname(__file__) + f'/../../lists/formatted_proteins_list.json')
+        protein_dict = json.load(protein_data)
+        meats = protein_dict['meat-fish']
+        if ingredient['name'].lower().split() in meats or ingredient['type'] == 'Meats, Fish and Seafood':
+            ingredient['contains']['Meat'] = True
+
+        # Lactose Identification
+        dairy = protein_dict['dairy']
+        if ingredient['name'].lower().split() in dairy or ingredient['type'] == 'Dairy, Eggs and Milk':
+            ingredient['contains']['Lactose'] = True
+
+        ingredient['method'] = None
         ingredients.append(ingredient)
 
     instructions = []
