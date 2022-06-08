@@ -94,11 +94,18 @@ def replace_ingredient(instructions, target, substitute):
         lowered = instruction.lower()
         if target in lowered:
             instructions[i] = lowered.replace(target, substitute)
+<<<<<<< HEAD
         
 def replace_ingredient_list(ingredients, target, substitute):
+=======
+
+def replace_ingredient_list(ingredients, target, substitute, changedkey=None):
+>>>>>>> 2a5cacf8ff0ae36e3ba14df30a469cf3749cc43b
     for i, ingredient in enumerate(ingredients):
         lowered = ingredient['name'].lower()
         if target in lowered:
+            if changedkey is not None:
+                ingredients[i][changedkey] = True
             ingredients[i]['name'] = lowered.replace(target, substitute)
         
 def instruction_subject(instructions, allowed_targets, word_tags):

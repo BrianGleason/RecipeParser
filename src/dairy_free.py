@@ -10,12 +10,12 @@ def make_dairy_free(recipe):
     cheese_file.close()
     for ing in df_dict:
         replace_ingredient(recipe['Instructions'], ing, df_dict[ing])
-        replace_ingredient_list(recipe['Ingredients'], ing, df_dict[ing])
+        replace_ingredient_list(recipe['Ingredients'], ing, df_dict[ing], changedkey="Lactose")
     
     for cheese in cheeses:
         cheese = cheese.lower().strip() + ' cheese'
         replace_ingredient(recipe['Instructions'], cheese, 'dairy free ' + cheese)
-        replace_ingredient_list(recipe['Ingredients'], cheese, 'dairy free ' + cheese)
+        replace_ingredient_list(recipe['Ingredients'], cheese, 'dairy free ' + cheese, changedkey="Lactose")
     
 
 if __name__ == '__main__':
