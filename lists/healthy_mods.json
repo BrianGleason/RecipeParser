@@ -1,0 +1,42 @@
+{
+  "herbs": {
+    "Reference": "Herbs and Spices",
+    "Modifiable": "Yes",
+    "Healthy": ["tumeric", "ginger", "cumin"],
+    "Unhealthy": ["st. john's wort", "fish oil", "artemisinin"]
+  },
+  "produce": {
+    "Reference": "Produce",
+    "Modifiable": "No"
+  },
+  "beverages": {
+    "Reference": "Beverages",
+    "Modifiable": "Yes",
+    "Healthy": ["water"],
+    "Unhealthy": ["red wine", "vodka", "rye whiskey"]
+  },
+  "organic": {
+    "Reference": "Natural/Organic Foods",
+    "Modifiable": "No"
+  },
+  "basic": {
+    "Reference": "Basic Cooking Ingredients",
+    "Modifiable": "Yes",
+    "Healthy": ["avocado oil", "sunflower oil", "coconut oil"],
+    "Unhealthy": ["butter"]
+  },
+  "baking": {
+    "Reference": "Baking Supplies",
+    "Modifiable": "Yes",
+    "Healthy": ["mannitol", "sorbitol", "xylitol"],
+    "Unhealthy": ["sugar"]
+  },
+  "dairy": {
+    "Reference": "Dairy, Eggs and Milk",
+    "Modifiable": "No"
+  },
+   "meats": {
+    "Reference": "Meats, Fish and Seafood",
+    "Modifiable": "No"
+  }
+}
