@@ -7,6 +7,8 @@ from termcolor import colored
 import shutil
 import validators
 from vegitarian_substitution import to_vegetarian, from_vegetarian
+from italian_cuisine_substitution import italian_cuisine_substitution
+
 
 termsize = shutil.get_terminal_size().columns
 print(colored("Enter an All Recipes URL:".center(termsize), 'green'))
@@ -36,6 +38,9 @@ while True:
     try:
         transform = int(input('Your choice (1-8): '))
         assert 0 < transform < 9
+        if transform == 5: 
+            italian_cuisine_substitution(recipe, url)
+            print_recipe(recipe, termsize, 'green', 'blue')
     except ValueError:
         print("Please enter an integer.")
     except AssertionError:

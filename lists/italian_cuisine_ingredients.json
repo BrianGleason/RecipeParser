@@ -93,19 +93,27 @@
     {
         "tomato sauce":
         {
-            "vegetarian": "True"
+            "vegetarian": "True",
+            "single serving quantity": ".5",
+            "unit": "cups"
         },
         "meat sauce":
         {
-            "vegetarian": "False"
+            "vegetarian": "False",
+            "single serving quantity": ".5",
+            "unit": "cups"
         },
         "alfredo sauce":
         {
-            "vegetarian": "True"
+            "vegetarian": "True",
+            "single serving quantity": ".5",
+            "unit": "cups"
         },
         "pesto":
         {
-            "vegetarian": "True"
+            "vegetarian": "True",
+            "single serving quantity": ".25",
+            "unit": "cups"
         }
     }
 
