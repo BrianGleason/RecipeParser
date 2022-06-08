@@ -1,9 +1,8 @@
 from ast import parse
 
 import nltk
-
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
 
 import urllib.parse
 import urllib.request
