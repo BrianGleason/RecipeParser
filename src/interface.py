@@ -38,7 +38,7 @@ while True:
     try:
         transform = int(input('Your choice (1-8): '))
         assert 0 < transform < 9
-        
+
     except ValueError:
         print("Please enter an integer.")
     except AssertionError:
@@ -65,7 +65,7 @@ elif transform == 5:
     italian_cuisine_substitution(recipe, url)
 elif transform == 6:
     predicate = "Smaller/Larger"
-    recipe['Ingredients'] = quantity_mod(recipe['Ingredients'])
+    quantity_mod(recipe['Ingredients'])
 elif transform == 7:
     predicate = "Method Swapped"
     # TODO: Change cooking method
