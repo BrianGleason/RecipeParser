@@ -15,7 +15,6 @@ Black-Eyed Peas
 Borlotti beans
 Cranberry beans
 Roman beans
-Butter Beans
 Cannellini Beans
 Christmas Lima Bean
 Chestnut Lima
@@ -37,7 +36,6 @@ Yellow Lentils
 Brown Lentils
 Other Lentils
 Lima Beans
-Butter Beans
 Lupini Beans
 Marrow Beans
 Moth Beans
@@ -167,7 +165,6 @@ White Button Mushrooms
 Napa Cabbage
 Nopales
 Okra
-Olive
 Onion
 Green Onions
 Scallions
@@ -180,18 +177,23 @@ snow peas
 sugar snap peas
 Peppers
 Anaheim Peppers
+Anaheim
 Banana Peppers
 Cayenne Peppers
 Cherry Peppers
 Chipotle Peppers
 Fresno Peppers
 Habanero Peppers
+Habenero
 Hungarian Peppers
 Yellow Wax Peppers
 Jalapeno Peppers
+Jalapeno
 New Mexico Peppers
 Poblano Peppers
+Poblano
 Serrano Peppers
+Serrano
 Sport Peppers
 Thai Peppers
 Bell Peppers

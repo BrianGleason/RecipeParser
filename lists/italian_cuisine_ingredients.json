@@ -6,7 +6,7 @@
             "vegetarian": "False",
             "cooking methods": ["bake", "fry", "grill", "steam"]
         },
-        "ground beef":
+        "meatball":
         {
             "vegetarian": "False",
             "cooking methods": ["bake", "fry", "grill", "steam"]
@@ -26,6 +26,12 @@
             "cooking methods": ["bake", "fry", "grill", "steam", "saute"]
         },
         "onion":
+        {
+            "vegetarian": "True",
+            "preparation methods": ["slice", "dice"],
+            "cooking methods": ["bake", "fry", "grill", "steam", "saute", "caramelize"]
+        },
+        "pepper":
         {
             "vegetarian": "True",
             "preparation methods": ["slice", "dice"],
@@ -81,14 +87,6 @@
         {
             "vegetarian": "True",
             "preparation methods": ["grate", "shred"]
-        },
-        "salt":
-        {
-            "vegetarian": "True"
-        },
-        "pepper":
-        {
-            "vegetarian": "True"
         }
     },
     "sauces":

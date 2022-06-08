@@ -16,6 +16,8 @@ def get_food_item(url, food_file_path):
             stemmedline = ' '.join(map(ps.stem, line.lower().split()))
             if(stemmedline in stemmedingredient):
                 outputlist.add(stemmedline)
+            elif(stemmedingredient in stemmedline.split(" ")):
+                outputlist.add(stemmedingredient)
     return outputlist
 
 #citation: list of fruits and vegetables from https://vegetablesfruitsgrains.com/
