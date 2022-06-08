@@ -46,33 +46,24 @@ while True:
         break
 
 if transform == 1:
-    predicate = "Vegitarian"
-    #to_vegetarian(recipe)
+    to_vegetarian(recipe)
 elif transform == 2:
-    predicate = "Non-vegitarian"
-    #from_vegetarian(recipe)
+    from_vegetarian(recipe)
 elif transform == 3:
-    predicate = "Healthy"
     # TODO: Transforrm to healthy
     sys.exit('Unsupported')
 elif transform == 4:
-    predicate = "Unhealthy"
     # TODO: Transform to unhealthy
     sys.exit('Unsupported')
 elif transform == 5:
-    predicate = "Italian"
     italian_cuisine_substitution(recipe, url)
 elif transform == 6:
-    predicate = "Smaller/Larger"
-    quantity_mod(recipe['Ingredients'])
+    quantity_mod(recipe)
 elif transform == 7:
-    predicate = "Method Swapped"
     # TODO: Change cooking method
     sys.exit('Unsupported')
 elif transform == 8:
-    predicate = "Lactose-free"
     # TODO: Transform to lactose free
     sys.exit('Unsupported')
 
-recipe['Name'] = predicate + " " + recipe['Name']
 print_recipe(recipe, termsize, 'green', 'blue')

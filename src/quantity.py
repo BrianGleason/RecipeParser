@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-def quantity_mod(ingredients):
+def quantity_mod(recipe):
     while True:
         try:
             ratio = Decimal(input('Enter a ratio (0.5 for half, 2 for double): '))
@@ -9,6 +9,8 @@ def quantity_mod(ingredients):
         else:
             break
 
-    for ingredient in ingredients:
+    for ingredient in recipe['Ingredients']:
         if ingredient["quantity"]:
             ingredient["quantity"] = str(Decimal(ingredient["quantity"].strip(' "')) * ratio)
+
+    recipe['Name'] = "Smaller/Larger " + recipe['Name']
