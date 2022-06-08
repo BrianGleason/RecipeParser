@@ -1,11 +1,11 @@
-from utils.utilities import parse_recipie
+from utils.utilities import parse_recipe
 from nltk.stem import PorterStemmer
 import os
-   
+
 ps = PorterStemmer()
 
 def get_food_item(url, food_file_path):
-    recipe = parse_recipie(url)
+    recipe = parse_recipe(url)
     with open(os.path.dirname(__file__) + food_file_path) as food_file:
         lines = food_file.readlines()
     outputlist = set()

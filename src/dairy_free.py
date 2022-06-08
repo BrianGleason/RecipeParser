@@ -1,4 +1,4 @@
-from utils.utilities import parse_recipie, replace_ingredient, replace_ingredient_list, get_all_urls
+from utils.utilities import parse_recipe, replace_ingredient, replace_ingredient_list, get_all_urls
 import json
 
 def make_dairy_free(recipe):
@@ -11,18 +11,18 @@ def make_dairy_free(recipe):
     for ing in df_dict:
         replace_ingredient(recipe['Instructions'], ing, df_dict[ing])
         replace_ingredient_list(recipe['Ingredients'], ing, df_dict[ing], changedkey="Lactose")
-    
+
     for cheese in cheeses:
         cheese = cheese.lower().strip() + ' cheese'
         replace_ingredient(recipe['Instructions'], cheese, 'dairy free ' + cheese)
         replace_ingredient_list(recipe['Ingredients'], cheese, 'dairy free ' + cheese, changedkey="Lactose")
-    
+
 
 if __name__ == '__main__':
     urls = get_all_urls()
     for url in urls:
         print(url)
-        recipe = parse_recipie(url)
+        recipe = parse_recipe(url)
         print("Ingredients:\n")
         print(list(map(lambda i: i['name'], recipe["Ingredients"])))
         make_dairy_free(recipe)

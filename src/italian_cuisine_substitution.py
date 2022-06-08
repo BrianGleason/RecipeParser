@@ -5,7 +5,7 @@ import os
 import re
 import json
 import random
-from utils.utilities import parse_recipie, get_all_urls, replace_ingredient, replace_ingredient_list
+from utils.utilities import parse_recipe, get_all_urls, replace_ingredient, replace_ingredient_list
 from fruits_and_vegs import getfruits, getveggies
 from seasonings_and_sauces import get_herbs_spices, get_sauces
 
@@ -34,7 +34,7 @@ def process_name(name, name_split, type_list, replace_dict, substitute_list, bul
             flag = True
             added = (type, substitute_list[0])
             if substitute_list == []: return
-    if flag: 
+    if flag:
         if not bulk_replace: substitute_list.pop(0)
         return True
     return False
@@ -54,7 +54,7 @@ def main():
         return
     url = args[1]
 
-    recipe = parse_recipie(url)
+    recipe = parse_recipe(url)
     ingredients = recipe['Ingredients']
     instructions = recipe['Instructions']
     vegetable_list = getveggies(url)

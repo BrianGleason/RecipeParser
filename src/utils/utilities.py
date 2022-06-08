@@ -12,12 +12,30 @@ import requests
 _usda_key = "KCB7Ijl50I1oHVbmgjD6VGguegsxW34dKMwtfPt1"
 
 from pprint import pprint
+from termcolor import colored
+import shutil
 
 import sys
 import string
 
-def parse_recipie(url):
-    """Crawl url and return recipie data
+def interface(url):
+    termsize = shutil.get_terminal_size().columns
+    recipe = parse_recipe(url)
+    print_recipe(recipe, termsize, 'green', 'blue')
+
+    # TODO: Add transform calls here, add transform argument
+
+def print_recipe(recipe, termsize, primary_color, secondary_color):
+    print(colored('Ingredients'.center(termsize),primary_color))
+    for ingredient in recipe['Ingredients']:
+        statement = ingredient['quantity'] + " " + ingredient['unit'] + " " + ingredient['name']
+        print(colored(statement, secondary_color))
+    print(colored('Instructions'.center(termsize),primary_color))
+    for instruction in recipe['Instructions']:
+        print(colored(instruction, secondary_color))
+
+def parse_recipe(url):
+    """Crawl url and return recipe data
     """
     req = urllib.request.Request(url)
     req.add_header('Cookie', 'euConsent=true')
@@ -60,7 +78,7 @@ def parse_recipie(url):
         instructions.append(tag.find('p').getText())
     substeps = parse_substeps(instructions)
 
-    recipie = {
+    recipe = {
         'Name': title,
         'Ingredients': ingredients,
         'Instructions': instructions,
@@ -68,7 +86,7 @@ def parse_recipie(url):
         'ServingSize' : serving_size
     }
 
-    return recipie
+    return recipe
 
 def query_fooddata(ingredient):
     """Query USDA FoodData Central with ingredient name, returns relevant dietary information
@@ -159,6 +177,6 @@ def no_punctuation(s):
     return s.translate(str.maketrans('', '', string.punctuation))
 
 # Example Call:
-# `python3 src/utils/utilities.py parse_recipie https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
+# `python3 src/utils/utilities.py parse_recipe https://www.allrecipes.com/recipe/228285/teriyaki-salmon/`
 if __name__ == '__main__':
     globals()[sys.argv[1]](sys.argv[2])

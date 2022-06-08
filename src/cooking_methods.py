@@ -1,11 +1,11 @@
-from utils.utilities import parse_recipie, get_all_urls, no_punctuation
+from utils.utilities import parse_recipe, get_all_urls, no_punctuation
 import json
 
 
 def get_cooking_method(url, cookingmethod_file_path):
     cooking_methods_tools_data = open(cookingmethod_file_path)
     cmt_dict = json.load(cooking_methods_tools_data)
-    recipe = parse_recipie(url)
+    recipe = parse_recipe(url)
     lines = set(cmt_dict)
     outputlist = []
     times = []
@@ -29,7 +29,7 @@ def get_cooking_method(url, cookingmethod_file_path):
                 to_append = word
             elif word == "cook" and saute:
                 to_append = "saute"
-            
+
             found_timeword = False
             if to_append is not None:
                 j = i + 1

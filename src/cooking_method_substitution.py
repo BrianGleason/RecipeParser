@@ -3,7 +3,7 @@ import sys
 import os
 import re
 import json
-from utils.utilities import parse_recipie, get_all_urls
+from utils.utilities import parse_recipe, get_all_urls
 
 def fahrenheit_estimate(num):
     if num >= 400:
@@ -33,11 +33,11 @@ def get_heating_temp_estimator(remove_method, remove_tools, step_list, substep_m
                         return fahrenheit_estimate(int(step_split_npl[deg_index - 1]))
                     # if celcius
                     if deg_index + 1 < len(step_split_npl) and (step_split_npl[deg_index + 1] == "celsius" or step_split_npl[deg_index + 1] == "c"):
-                        return celsius_estimate(int(step_split_npl[deg_index - 1])) 
+                        return celsius_estimate(int(step_split_npl[deg_index - 1]))
 
             if "high" in step_split_npl and "medium" in step_split_npl: return "medium high"
             if "medium" in step_split_npl and "low" in step_split_npl: return "medium low"
-            if "high" in step_split_npl: return "high" 
+            if "high" in step_split_npl: return "high"
             if "medium" in step_split_npl: return "medium"
             if "low" in step_split_npl: return "low"
 
@@ -57,13 +57,13 @@ def main():
     if remove_method in cmt_dict: remove_tools = cmt_dict[remove_method]
     add_method = args[3]
     add_tool = None
-    if add_method in cmt_dict: 
+    if add_method in cmt_dict:
         add_tool = cmt_dict[add_method][0]
     else:
         print('lacking information on what kitchen tools are used with this method, results may include incorrect kitchen tools')
 
 
-    recipe = parse_recipie(url)
+    recipe = parse_recipe(url)
     print(recipe)
 
     heating_temp = get_heating_temp_estimator(remove_method, remove_tools, recipe['Instructions'], recipe['Substeps'])
@@ -94,7 +94,7 @@ def main():
                             del substep[deg_index + 1]
                             substep[deg_index] = heating_temp
                             del substep[deg_index - 1]
-                        
+
                     if "(" in substep: substep.remove("(")
                     if ")" in substep: substep.remove(")")
                 for tool in remove_tools:
