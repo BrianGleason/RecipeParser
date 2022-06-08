@@ -2,10 +2,11 @@
 
 ```
 cd src && chmod +x interface.py
-./interface.py https://www.allrecipes.com/recipe/228285/teriyaki-salmon/
+./interface.py
 ```
+No CLI arguments are needed, script will prompt for them when necessary.
 
-Then enter the desired transform. No CLI options are taken as input.
+First prompt will be for an All Recipes URL. Enter it without quotes. Then enter the desired transform when prompted.
 
 # Presentations
 
