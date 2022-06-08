@@ -31,6 +31,10 @@ def parse_recipie(url):
     serving_size = None
     if len(potential_serving_sizes) > 0: serving_size = potential_serving_sizes[0]
 
+    # (Additional info) Can include: Prep, Cook, Total, Servings, Yield
+    cook_tags = soup.findAll("div", {"class": "recipe-meta-item-body elementFont__subtitle"})
+    cook_metainfo = [(tag.contents[0].text) for tag in cook_tags]
+
     ingredients = []
     for tag in ingredient_tags:
         ingredient = {}
@@ -54,15 +58,15 @@ def parse_recipie(url):
     instructions = []
     for tag in instruction_tags:
         instructions.append(tag.find('p').getText())
+    substeps = parse_substeps(instructions)
 
     recipie = {
         'Name': title,
         'Ingredients': ingredients,
         'Instructions': instructions,
+        'Substeps': substeps,
         'ServingSize' : serving_size
     }
-    recipie['Substeps'] = parse_substeps(recipie['Instructions'])
-    # pprint(recipie)
 
     return recipie
 
@@ -107,7 +111,7 @@ def replace_ingredient_list(ingredients, target, substitute, changedkey=None):
             if changedkey is not None:
                 ingredients[i][changedkey] = True
             ingredients[i]['name'] = lowered.replace(target, substitute)
-        
+
 def instruction_subject(instructions, allowed_targets, word_tags):
     """ Word identification used for finding cooking methods and tools.
     """
