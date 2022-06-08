@@ -84,7 +84,7 @@ def parse_recipe(url):
         ingredient['contains'] = {'Meat': None, 'Gluten': None, 'Lactose': None}
 
         # Meat Identification
-        protein_data = open(os.path.dirname(__file__) + f'/../../lists/formatted_proteins_list.json')
+        protein_data = open(os.path.dirname(__file__) + f'/../../lists/formatted_proteins_list.json', encoding='utf-8')
         protein_dict = json.load(protein_data)
         meats = protein_dict['meat-fish']
         isMeat = ingredient['name'].lower().split() in meats or ingredient['type'] == 'Meats, Fish and Seafood'

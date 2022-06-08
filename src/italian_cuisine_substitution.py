@@ -41,9 +41,9 @@ def process_name(name, name_split, type_list, replace_dict, substitute_list, bul
 
 
 def italian_cuisine_substitution(recipe, url):
-    cooking_methods_tools_data = open(os.path.dirname(__file__) + f'/../lists/primary_cooking_methods_tools.json')
-    italian_cuisine_data = open(os.path.dirname(__file__) + f'/../lists/italian_cuisine_ingredients.json')
-    cuisine_data = open(os.path.dirname(__file__) + f'/../lists/cuisine_list.json')
+    cooking_methods_tools_data = open(os.path.dirname(__file__) + f'/../lists/primary_cooking_methods_tools.json', encoding='utf-8')
+    italian_cuisine_data = open(os.path.dirname(__file__) + f'/../lists/italian_cuisine_ingredients.json', encoding='utf-8')
+    cuisine_data = open(os.path.dirname(__file__) + f'/../lists/cuisine_list.json', encoding='utf-8')
     cuisine_dict = json.load(cuisine_data)
     cmt_dict = json.load(cooking_methods_tools_data)
     italian_dict = json.load(italian_cuisine_data)

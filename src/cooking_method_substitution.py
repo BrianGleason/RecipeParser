@@ -43,7 +43,7 @@ def get_heating_temp_estimator(remove_method, remove_tools, step_list, substep_m
 
 
 def main():
-    cooking_methods_tools_data = open(os.path.dirname(__file__) + f'/../lists/primary_cooking_methods_tools.json')
+    cooking_methods_tools_data = open(os.path.dirname(__file__) + f'/../lists/primary_cooking_methods_tools.json', encoding='utf-8')
     cmt_dict = json.load(cooking_methods_tools_data)
 
     args = sys.argv

@@ -6,7 +6,7 @@ ps = PorterStemmer()
 
 def get_food_item(url, food_file_path):
     recipe = parse_recipe(url)
-    with open(os.path.dirname(__file__) + food_file_path) as food_file:
+    with open(os.path.dirname(__file__) + food_file_path, encoding='utf-8') as food_file:
         lines = food_file.readlines()
     outputlist = set()
     for ingredientdict in recipe["Ingredients"]:

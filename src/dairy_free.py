@@ -2,10 +2,10 @@ from utils.utilities import parse_recipe, replace_ingredient, replace_ingredient
 import json
 
 def make_dairy_free(recipe):
-    dairy_free_data = open("lists/lactose_list.json")
+    dairy_free_data = open("lists/lactose_list.json", encoding='utf-8')
     df_dict = json.load(dairy_free_data)
     dairy_free_data.close()
-    cheese_file = open('lists/cheese_list.txt')
+    cheese_file = open('lists/cheese_list.txt', encoding='utf-8')
     cheeses = cheese_file.readlines()
     cheese_file.close()
     for ing in df_dict:
