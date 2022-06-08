@@ -52,21 +52,26 @@ elif transform == 2:
 elif transform == 3:
     predicate = "Healthy"
     # TODO: Transforrm to healthy
+    sys.exit('Unsupported')
 elif transform == 4:
     predicate = "Unhealthy"
     # TODO: Transform to unhealthy
+    sys.exit('Unsupported')
 elif transform == 5:
     predicate = "Italian"
     # TODO: Transform to Italian
+    sys.exit('Unsupported')
 elif transform == 6:
     predicate = "Smaller/Larger"
     recipe['Ingredients'] = quantity_mod(recipe['Ingredients'])
 elif transform == 7:
-    predicate "Method Swapped"
+    predicate = "Method Swapped"
     # TODO: Change cooking method
+    sys.exit('Unsupported')
 elif transform == 8:
     predicate = "Lactose-free"
     # TODO: Transform to lactose free
+    sys.exit('Unsupported')
 
 recipe['Name'] = predicate + " " + recipe['Name']
 print_recipe(recipe, termsize, 'green', 'blue')
