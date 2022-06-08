@@ -12,5 +12,3 @@ def quantity_mod(ingredients):
     for ingredient in ingredients:
         if ingredient["quantity"]:
             ingredient["quantity"] = str(Decimal(ingredient["quantity"].strip(' "')) * ratio)
-
-    return ingredients
