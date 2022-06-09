@@ -195,6 +195,6 @@
         "appliance": ["grill"],
         "container": ["grill tray"],
         "cover": ["hood"],
-        "place": ["grill"]
+        "place": ["rack"]
     }
 }

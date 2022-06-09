@@ -160,6 +160,10 @@ def substitute_cooking_method(recipe, add_method, remove_method):
     else:
         print('lacking information on what kitchen tools are used with this method, results may include incorrect kitchen tools')
 
+    # handle grill as noun
+    if remove_method == "grill": add_method = add_tool
+
+
     heating_temp = get_heating_temp_estimator(remove_method, remove_tools, recipe['Instructions'], recipe['Substeps'])
 
     if heating_temp != None:
