@@ -5,19 +5,17 @@ import random
 import nltk
 from collections import Counter
 
-from utils.utilities import replace_ingredient, replace_ingredient_list
+from utils.utilities import replace_all
 
 
 def to_vegetarian(recipe):
     subs = open(os.path.dirname(__file__) + f'/../lists/vegetarian_subs.json', encoding='utf-8')
     subs_dict = json.load(subs)
     ingredients = recipe['Ingredients']
-    instructions = recipe['Instructions']
     for ingredient in ingredients:
         if ingredient['contains']['Meat']:
             replace = _get_sub(ingredient['name'], subs_dict)
-            replace_ingredient(instructions, ingredient['name'], replace)
-            replace_ingredient_list(ingredients, ingredient['name'], replace)
+            replace_all(recipe, ingredient['name'], replace)
 
 
 def _get_sub(name, subs_dict):
@@ -57,10 +55,15 @@ def from_vegetarian(recipe):
 
     meats = protein_dict['meat-fish']
     ingredients = recipe['Ingredients']
-    instructions = recipe['Instructions']
     for ingredient in ingredients:
         if ingredient['type'] == 'Natural/Organic Foods' or ingredient['name'] in fruit_list or ingredient['name'] in vegetable_list:
             meat = random.choice(meats)
-            replace_ingredient(instructions, ingredient['name'], meat)
-            replace_ingredient_list(ingredients, ingredient['name'], meat)
-            break
+            replace_all(recipe, ingredient['name'], meat)
+            return
+    for ingredient in ingredients:
+        if ingredient['name'] in fruit_list or ingredient['name'] in vegetable_list:
+            meat = random.choice(meats)
+            replace_all(recipe, ingredient['name'], meat)
+            return
+
+    replace_all(recipe, random.choice(ingredients)['name'], random.choice(meats))

@@ -15,7 +15,8 @@
 
   	1. If ingredient is fruit, vegetable, or Natural/Organic Food, it's replaced with a random meat (scraped from web)
 
-	2. This is only done once (don't want to replace too many non-meat ingredients w/ meats)
+	2. This is only done once (don't want to replace too many non-meat ingredients w/ meats), and it prefers to replace Natural/Organic Foods
+	3. If no replacement is found, a random ingredient is replaced
 3. Transform https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/ to Healthy:
   - Enter 4 at prompt, then enter 1
   - See video for explanation - Carson
