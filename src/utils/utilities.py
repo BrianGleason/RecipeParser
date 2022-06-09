@@ -138,6 +138,13 @@ def query_fooddata(ingredient):
 
     return diet
 
+def replace_all(recipe, target, substitute):
+    replace = re.compile(re.escape(target), re.IGNORECASE)
+    for i, instruction in enumerate(recipe['Instructions']):
+        recipe['Instructions'][i] = replace.sub(substitute, recipe['Instructions'][i])
+    for i, ingredient in enumerate(recipe['Ingredients']):
+        recipe['Ingredients'][i]['name'] = replace.sub(substitute, recipe['Ingredients'][i]['name'])
+
 def replace_ingredient(instructions, target, substitute):
     for i, instruction in enumerate(instructions):
         lowered = instruction.lower()

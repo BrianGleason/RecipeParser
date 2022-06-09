@@ -3,7 +3,7 @@ import os
 import json
 import random
 import sys
-from utils.utilities import replace_ingredient, replace_ingredient_list
+from utils.utilities import replace_all
 
 def healthy_conversion(recipe, conversion):
     """Converts foods to healthy/unhealthy based on 2 methods.
@@ -48,29 +48,22 @@ def healthy_conversion(recipe, conversion):
         if method == 1:
             if any((match := food) in ingredient['name'] for food in cons_dict.keys()):
                 if conversion == "healthy":
-                    ingredient['name'] = random.choice(cons_dict[match])
-                    # replacement = random.choice(cons_dict[match])
-                    # replace_ingredient(recipe['Instructions'], ingredient['name'], replacement)
-                    # replace_ingredient_list(recipe['Ingredients'], ingredient['name'], replacement)
+                    replace_all(recipe, match, random.choice(cons_dict[match]))
 
                 elif conversion == "unhealthy": quantity_mod(ingredient, 2)
 
+        # FIXME: replace simplified reference to replaced ingredient
+        # i.e. "wine" in replaced ingredient "Burgondy wine"
         elif method == 2:
             if any((match := category) == ingredient['type'] for category in aggro_categories):
                 # Limit to one replacement per category
                 aggro_categories.remove(match)
 
                 if conversion == "healthy":
-                    ingredient['name'] = random.choice(aggro_dict[match]['Healthy'])
-                    # replacement = random.choice(aggro_dict[match]['Healthy'])
-                    # replace_ingredient(recipe['Instructions'], ingredient['name'], replacement)
-                    # replace_ingredient_list(recipe['Ingredients'], ingredient['name'], replacement)
+                    replace_all(recipe, ingredient['name'], random.choice(aggro_dict[match]['Healthy']))
 
                 elif conversion == "unhealthy":
-                    ingredient['name'] = random.choice(aggro_dict[match]['Unhealthy'])
-                    # replacement = random.choice(aggro_dict[match]['Unhealthy'])
-                    # replace_ingredient(recipe['Instructions'], ingredient['name'], replacement)
-                    # replace_ingredient_list(recipe['Ingredients'], ingredient['name'], replacement)
+                    replace_all(recipe, ingredient['name'], random.choice(aggro_dict[match]['Unhealthy']))
 
 def serving_size(recipe):
     while True:
