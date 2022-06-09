@@ -1,4 +1,5 @@
 from decimal import Decimal
+from fractions import Fraction
 import os
 import json
 import random
@@ -87,4 +88,4 @@ def quantity_full(recipe, ratio):
 
 def quantity_mod(ingredient, ratio):
     if ingredient["quantity"]:
-        ingredient["quantity"] = str(Decimal(ingredient["quantity"].strip(' "')) * ratio)
+        ingredient["quantity"] = str(Fraction(Decimal(ingredient["quantity"].strip(' "')) * ratio))
