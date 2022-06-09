@@ -17,6 +17,7 @@ def make_dairy_free(recipe):
         replace_ingredient(recipe['Instructions'], cheese, 'dairy free ' + cheese)
         replace_ingredient_list(recipe['Ingredients'], cheese, 'dairy free ' + cheese, changedkey="Lactose")
 
+    recipe['Name'] = "Lactose-free " + recipe['Name']
 
 if __name__ == '__main__':
     urls = get_all_urls()
