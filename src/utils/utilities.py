@@ -90,12 +90,12 @@ def parse_recipe(url):
         protein_data = open(os.path.dirname(__file__) + f'/../../lists/formatted_proteins_list.json', encoding='utf-8')
         protein_dict = json.load(protein_data)
         meats = protein_dict['meat-fish']
-        isMeat = ingredient['name'].lower().split() in meats or ingredient['type'] == 'Meats, Fish and Seafood'
+        isMeat = any([token in meats for token in ingredient['name'].lower().split()]) or ingredient['type'] == 'Meats, Fish and Seafood'
         ingredient['contains']['Meat'] = isMeat
 
         # Lactose Identification
         dairy = protein_dict['dairy']
-        isDairy = ingredient['name'].lower().split() in dairy or ingredient['type'] == 'Dairy, Eggs and Milk'
+        isDairy = any([token in dairy for token in ingredient['name'].lower().split()]) or ingredient['type'] == 'Dairy, Eggs and Milk'
         ingredient['contains']['Lactose'] = isDairy
 
         ingredient['method'] = None
