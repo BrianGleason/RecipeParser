@@ -42,6 +42,10 @@ def _get_sub(name, subs_dict):
     return "tofu" if changed_name == l_name else changed_name
 
 def from_vegetarian(recipe):
+    ingredients = recipe['Ingredients']
+    for ingredient in ingredients:
+        if ingredient['contains']['Meat']: return
+
     protein_data = open(os.path.dirname(__file__) + f'/../lists/formatted_proteins_list.json', encoding='utf-8')
     protein_dict = json.load(protein_data)
 
