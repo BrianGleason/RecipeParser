@@ -6,7 +6,7 @@ import shutil
 import validators
 
 from utils.utilities import parse_recipe, print_recipe
-from healthy import quantity_mod
+from healthy import serving_size, healthy_conversion
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 from italian_cuisine_substitution import italian_cuisine_substitution
 
@@ -51,15 +51,13 @@ if transform == 1:
 elif transform == 2:
     from_vegetarian(recipe)
 elif transform == 3:
-    # TODO: Transforrm to healthy
-    sys.exit('Unsupported')
-elif transform == 4:
-    # TODO: Transform to unhealthy
-    sys.exit('Unsupported')
-elif transform == 5:
     italian_cuisine_substitution(recipe, url)
+elif transform == 4:
+    healthy_conversion(recipe, "healthy")
+elif transform == 5:
+    healthy_conversion(recipe, "unhealthy")
 elif transform == 6:
-    quantity_mod(recipe)
+    serving_size(recipe)
 elif transform == 7:
     # TODO: Change cooking method
     sys.exit('Unsupported')
