@@ -15,7 +15,8 @@
 
   	1. If ingredient is fruit, vegetable, or Natural/Organic Food, it's replaced with a random meat (scraped from web)
 
-	2. This is only done once (don't want to replace too many non-meat ingredients w/ meats)
+	2. This is only done once (don't want to replace too many non-meat ingredients w/ meats), and it prefers to replace Natural/Organic Foods
+	3. If no replacement is found, a random ingredient is replaced
 3. Transform https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/ to Healthy:
   - Enter 4 at prompt, then enter 1
   - See video for explanation - Carson
@@ -36,6 +37,8 @@
 8. Transform https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/ cooking method:
   - To maintain accuracy, the cooking method substitution also transforms associated key kitchen tools. For example, you can see that baking was substituted for frying,
     but the oven was also substituted for a stove and the door of the oven was substituted for a pan lid. For other methods, things like pans, grill grates, etc. are also substituted.
+  - The cooking method also makes general heat estimates out of any temperature values, translating them to 'high, medium, or low'
+9. Transform https://www.allrecipes.com/recipe/229166/grilled-veggie-skewers/, non-vegetarian, then cooking method
 
 # Example Usage
 
