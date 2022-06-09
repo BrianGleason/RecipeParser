@@ -85,7 +85,7 @@
         "appliance": ["grill"],
         "container": ["grill tray"],
         "cover": ["hood"],
-        "place": ["grate"]
+        "place": ["rack", "grate"]
 
     },
     "broil": {
@@ -99,7 +99,7 @@
         "appliance": ["grill"],
         "container": ["grill tray"],
         "cover": ["hood"],
-        "place": ["grill"]
+        "place": ["rack", "grill"]
 
     },
     "fry": {

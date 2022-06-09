@@ -4,7 +4,7 @@ import os
 import re
 import json
 from termcolor import colored
-from utils.utilities import parse_recipe, get_all_urls
+from utils.utilities import parse_recipe, get_all_urls, replace_all
 
 def method_interface(recipe, termsize):
     print("\n")
@@ -173,6 +173,7 @@ def substitute_cooking_method(recipe, add_method, remove_method):
             substep_lower = []
             for substep_step in substep:
                 substep_lower.append(substep_step.lower())
+            print(substep_lower)
             # if any remove tools are in substep
             tool_or_method_flag = False
             if len([i for i in remove_tools if i in substep_lower]) > 0:
@@ -197,6 +198,7 @@ def substitute_cooking_method(recipe, add_method, remove_method):
                         if place in substep_lower and add_place != None:
                             place_index = substep_lower.index(place)
                             substep[place_index] = add_place
+                    
                 if len([i for i in remove_covers if i in substep_lower]) > 0:
                     for cover in remove_covers:
                         if cover in substep_lower and add_cover != None:
@@ -208,6 +210,7 @@ def substitute_cooking_method(recipe, add_method, remove_method):
                             container_index = substep_lower.index(container)
                             substep[container_index] = add_container
 
+    print(remove_places)
     compose_substeps_into_instructions(recipe)
     recipe['Name'] = f'{recipe["Name"]} ({remove_method.capitalize()} replaced with {add_method.capitalize()})'
     #print("AFTER", recipe['Instructions'])
