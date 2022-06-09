@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
-from utils.utilities import parse_recipe, print_recipe
-from quantity import quantity_mod
 import sys
 from termcolor import colored
 import shutil
 import validators
+
+from utils.utilities import parse_recipe, print_recipe
+from healthy import quantity_mod
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 from italian_cuisine_substitution import italian_cuisine_substitution
 
@@ -26,9 +27,9 @@ print_recipe(recipe, termsize, 'green', 'red')
 print(colored("What transformation do you want to perform? Avalable options:".center(termsize),'green'))
 print("To vegitarian (Enter 1)")
 print("To non-vegitarian (Enter 2)")
-print("To healthy (Enter 3)")
-print("To unhealthy (Enter 4)")
-print("To Italian (Enter 5)")
+print("To Italian (Enter 3)")
+print("To healthy (Enter 4)")
+print("To unhealthy (Enter 5)")
 print("Change serving amount (Enter 6)")
 print("Change cooking method (Enter 7)")
 print("To lactose-free (Enter 8)")

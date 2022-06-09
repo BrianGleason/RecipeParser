@@ -83,15 +83,8 @@ def parse_recipe(url):
         ingredient['unit'] = tag.findChild("input")['data-unit']
         ingredient['type'] = tag.findChild("input")['data-store_location']
 
-        # TODO: Add identification passes to ingredients here
+        # Add identification passes to ingredients here
         ingredient['contains'] = {'Meat': None, 'Gluten': None, 'Lactose': None}
-        ingredient['healthy'] = None
-
-        # Unhealthy Identification
-        healthy_data = open(os.path.dirname(__file__) + f'/../../lists/healthy_alternatives.json', encoding='utf-8')
-        healthy_dict = json.load(healthy_data)
-        if any(food in ingredient['name'] for food in healthy_dict.keys()):
-            ingredient['healthy'] = False
 
         # Meat Identification
         protein_data = open(os.path.dirname(__file__) + f'/../../lists/formatted_proteins_list.json', encoding='utf-8')
