@@ -139,6 +139,12 @@ def query_fooddata(ingredient):
     return diet
 
 def replace_all(recipe, target, substitute):
+    """ Replace ingredient in instructions and ingredient list.
+
+    FIXME: replace simplified reference to replaced ingredient
+    i.e. "wine" in replaced ingredient "Burgondy wine"
+    Change target based on both words
+    """
     replace = re.compile(re.escape(target), re.IGNORECASE)
     for i, instruction in enumerate(recipe['Instructions']):
         recipe['Instructions'][i] = replace.sub(substitute, recipe['Instructions'][i])
