@@ -8,7 +8,7 @@ No CLI arguments are needed, script will prompt for them when necessary.
 
 First prompt will be for an All Recipes URL. Enter it without quotes. Then enter the desired transform when prompted.
 
-Some options require additional input: healthy/unhealthy conversion, and changing serving size.
+Some options require additional input: healthy/unhealthy conversion, changing serving size, and changing cooking method. 
 
 # Presentations
 

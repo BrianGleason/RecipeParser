@@ -3,9 +3,10 @@ import os
 import json
 import random
 import sys
+from termcolor import colored
 from utils.utilities import replace_all
 
-def healthy_conversion(recipe, conversion):
+def healthy_conversion(recipe, conversion, termsize):
     """Converts foods to healthy/unhealthy based on 2 methods.
 
     Valid conversions: "healthy" or "unhealthy"
@@ -20,9 +21,13 @@ def healthy_conversion(recipe, conversion):
     with a healthy/unhealthy alternative
     """
 
+    print(colored("Please select an conversion method:".center(termsize), 'green'))
+    print("Conservative (Enter 1)")
+    print("Aggressive (Enter 2)")
+
     while True:
         try:
-            method = int(input('Please select an conversion method: conservative (Enter 1) or aggressive (Enter 2): '))
+            method = int(input('Your choice (1-2): '))
             assert 0 < method < 3
         except ValueError:
             print("Please enter an integer.")
@@ -52,8 +57,6 @@ def healthy_conversion(recipe, conversion):
 
                 elif conversion == "unhealthy": quantity_mod(ingredient, 2)
 
-        # FIXME: replace simplified reference to replaced ingredient
-        # i.e. "wine" in replaced ingredient "Burgondy wine"
         elif method == 2:
             if any((match := category) == ingredient['type'] for category in aggro_categories):
                 # Limit to one replacement per category
@@ -65,10 +68,11 @@ def healthy_conversion(recipe, conversion):
                 elif conversion == "unhealthy":
                     replace_all(recipe, ingredient['name'], random.choice(aggro_dict[match]['Unhealthy']))
 
-def serving_size(recipe):
+def serving_size(recipe, termsize):
+    print(colored("Enter a ratio (0.5 for half, 2 for double): ".center(termsize), 'green'))
     while True:
         try:
-            ratio = Decimal(input('Enter a ratio (0.5 for half, 2 for double): '))
+            ratio = Decimal(input('Your choice: '))
         except ValueError:
             print("Please enter a valid decimal.")
         else:

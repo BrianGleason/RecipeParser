@@ -3,7 +3,47 @@ import sys
 import os
 import re
 import json
+from termcolor import colored
 from utils.utilities import parse_recipe, get_all_urls
+
+def method_interface(recipe, termsize):
+    print("\n")
+    print(colored("What method do you want to replace, and with what? Avalable options:".center(termsize),'green'))
+    print("For Boil (Enter 1)")
+    print("For Bake (Enter 2)")
+    print("For Pan Fry (Enter 3)")
+    print("For Grill (Enter 4)")
+    print("For Steam (Enter 5)")
+    print("For Smoke (Enter 6)")
+    print('Note: if you try to replace a method that is not used in the recipe, there will be nothing to replace')
+
+    method_list = ["boil", "bake", "fry", "grill", "steam", "smoke"]
+
+    while True:
+        try:
+            method1 = int(input('Your method to replace (1-6): '))
+            assert 0 < method1 < 7
+        except ValueError:
+            print("Please enter an integer.")
+        except AssertionError:
+            print("Please enter an integer 1-6")
+        else:
+            break
+
+    while True:
+        try:
+            method2 = int(input('Your method to add (1-6): '))
+            assert 0 < method2 < 7
+        except ValueError:
+            print("Please enter an integer.")
+        except AssertionError:
+            print("Please enter an integer 1-6")
+        else:
+            break
+
+    remove_method = method_list[method1 - 1]
+    add_method = method_list[method2 - 1]
+    substitute_cooking_method(recipe, add_method, remove_method)
 
 def untokenize(words):
     """
@@ -103,7 +143,7 @@ def substitute_cooking_method(recipe, add_method, remove_method):
     remove_covers = []
     remove_places = []
     remove_containers = []
-    if remove_method in cmt_dict: 
+    if remove_method in cmt_dict:
         remove_tools = cmt_dict[remove_method]['appliance']
         remove_covers = cmt_dict[remove_method]['cover']
         remove_places = cmt_dict[remove_method]['place']
@@ -145,7 +185,7 @@ def substitute_cooking_method(recipe, add_method, remove_method):
                 substep_lower, substep, heating_temp
                 remove_index = substep_lower.index(remove_method)
                 substep[remove_index] = add_method
-            
+
             # if tool or method present, look for replacement places and covers/doors
             if tool_or_method_flag:
                 if len([i for i in remove_places if i in substep_lower]) > 0:
@@ -163,7 +203,7 @@ def substitute_cooking_method(recipe, add_method, remove_method):
                         if container in substep_lower and add_container != None:
                             container_index = substep_lower.index(container)
                             substep[container_index] = add_container
-                    
+
     compose_substeps_into_instructions(recipe)
     recipe['Name'] = f'{recipe["Name"]} ({remove_method.capitalize()} replaced with {add_method.capitalize()})'
     #print("AFTER", recipe['Instructions'])
@@ -182,4 +222,4 @@ def main():
 
     substitute_cooking_method(recipe, add_method, remove_method)
 
-main()
+# main()

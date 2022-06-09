@@ -9,7 +9,7 @@ from utils.utilities import parse_recipe, print_recipe
 from healthy import serving_size, healthy_conversion
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 from italian_cuisine_substitution import italian_cuisine_substitution
-from cooking_method_substitution import substitute_cooking_method
+from cooking_method_substitution import method_interface
 
 termsize = shutil.get_terminal_size().columns
 print(colored("Enter an All Recipes URL:".center(termsize), 'green'))
@@ -54,25 +54,13 @@ elif transform == 2:
 elif transform == 3:
     italian_cuisine_substitution(recipe, url)
 elif transform == 4:
-    healthy_conversion(recipe, "healthy")
+    healthy_conversion(recipe, "healthy", termsize)
 elif transform == 5:
-    healthy_conversion(recipe, "unhealthy")
+    healthy_conversion(recipe, "unhealthy", termsize)
 elif transform == 6:
-    serving_size(recipe)
+    serving_size(recipe, termsize)
 elif transform == 7:
-    print("\n")
-    print(colored("What method do you want to replace, and with what? Avalable options:".center(termsize),'green'))
-    print("For Boil (Enter 1)")
-    print("For Bake (Enter 2)")
-    print("For Pan Fry (Enter 3)")
-    print("For Grill (Enter 4)")
-    print("For Steam (Enter 5)")
-    print("For Smoke (Enter 6)")
-    method_list = ["boil", "bake", "fry", "grill", "steam", "smoke"]
-    print('Note: if you try to replace a method that is not used in the recipe, there will be nothing to replace')
-    remove_method = method_list[int(input('Your method to replace (1-6): ')) - 1]
-    add_method = method_list[int(input('Your method to add (1-6): ')) - 1]
-    substitute_cooking_method(recipe, add_method, remove_method)
+    method_interface(recipe, termsize)
 elif transform == 8:
     # TODO: Transform to lactose free
     sys.exit('Unsupported')
