@@ -1,9 +1,21 @@
 # Demo
 
-1. Transform https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/ to Vegitarian: 
+1. Transform https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/ to Vegetarian: 
   - Enter 1 at prompt
-2. Transform https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/ to Non-vegitarian:
+  - Note
+  	
+	  A non-vegetarian ingredient is replaced according to the following rules
+	1. If ingredient has other nouns, non-vegetarian item is dropped (e.g. sausage flavored pasta sauce --> flavored pasta sauce.)
+	2. If non-vegetarian ingredient is adjective, change adjective to vegetarian (beef stew --> vegetarian stew)
+	3. If neither are true (e.g. one noun), replace with chosen substitution (beef --> Beyond Beef)
+	4. If no substitute exists, replace with Tofu
+2. Transform https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/ to Non-vegetarian:
   - Enter 2 at prompt
+  - Note
+
+  	1. If ingredient is fruit, vegetable, or Natural/Organic Food, it's replaced with a random meat (scraped from web)
+
+	2. This is only done once (don't want to replace too many non-meat ingredients w/ meats)
 3. Transform https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/ to Healthy:
   - Enter 4 at prompt, then enter 1
   - See video for explanation - Carson
