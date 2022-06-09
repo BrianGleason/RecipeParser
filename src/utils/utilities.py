@@ -138,12 +138,6 @@ def query_fooddata(ingredient):
 
     return diet
 
-def quantity_mod(ingredients, ratio):
-    for ingredient in ingredients:
-        if ingredient["quantity"]: ingredient["quantity"] *= ratio
-
-    return ingredients
-
 def replace_ingredient(instructions, target, substitute):
     for i, instruction in enumerate(instructions):
         lowered = instruction.lower()

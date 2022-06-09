@@ -1,50 +1,42 @@
 {
-  "herbs": {
-    "Reference": "Herbs and Spices",
+  "Herbs and Spices": {
     "Reasonable": "Yes",
     "Healthy": ["tumeric", "ginger", "cumin"],
     "Unhealthy": ["st. john's wort", "fish oil", "artemisinin"]
   },
-  "produce": {
-    "Reference": "Produce",
+  "Produce": {
     "Reasonable": "No",
     "Healthy": ["broccoli", "carrots", "spinach"],
     "Unhealthy": ["rotten tomatoes", "dark chocolate raisins", "yellow star fruit"]
   },
-  "beverages": {
-    "Reference": "Beverages",
+  "Beverages": {
     "Reasonable": "Yes",
     "Healthy": ["water", "apple juice", "soy milk"],
     "Unhealthy": ["red wine", "vodka", "rye whiskey"]
   },
-  "organic": {
-    "Reference": "Natural/Organic Foods",
-    "Reasonable": "Yes"
-    "Healthy": ["seitan", "lentils", "beans"]
+  "Natural/Organic Foods": {
+    "Reasonable": "Yes",
+    "Healthy": ["seitan", "lentils", "beans"],
     "Unhealthy": ["peanuts", "crickets", "trail mix"]
   },
-  "basic": {
-    "Reference": "Basic Cooking Ingredients",
+  "Basic Cooking Ingredients": {
     "Reasonable": "Yes",
     "Healthy": ["avocado oil", "sunflower oil", "coconut oil"],
     "Unhealthy": ["butter", "lard", "monosodium glutamate"]
   },
-  "baking": {
-    "Reference": "Baking Supplies",
+  "Baking Supplies": {
     "Reasonable": "Yes",
     "Healthy": ["mannitol", "sorbitol", "xylitol"],
     "Unhealthy": ["sugar", "high-fructose corn syrup", "guar gum"]
   },
-  "dairy": {
-    "Reference": "Dairy, Eggs and Milk",
+  "Dairy, Eggs and Milk": {
     "Reasonable": "No",
     "Healthy": ["feta cheese", "eggs", "oat milk"],
     "Unhealthy": ["ice cream", "goldfish", "chocolate"]
   },
-   "meats": {
-    "Reference": "Meats, Fish and Seafood",
+   "Meats, Fish and Seafood": {
     "Reasonable": "No",
-    "Healthy": ["turkey", "lamb", "veal"]
-    "Unhealthy": ["hot dogs", "mcnuggets", "imported swordfish"
+    "Healthy": ["turkey", "lamb", "veal"],
+    "Unhealthy": ["hot dogs", "mcnuggets", "imported swordfish"]
   }
 }
