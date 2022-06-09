@@ -122,6 +122,34 @@ def italian_cuisine_substitution(recipe, url):
         if word.lower() in cuisine_dict['Cuisines']:
             recipe['Name'] = recipe['Name'].replace(word, "")
             flag = True
+    print("AAAA")
+    for step_index in range(len(recipe['Instructions'])):
+        step = recipe['Instructions'][step_index]
+        sent_list = step.split(".")
+        for element in sent_list:
+            element = element + "."
+        new_sent_list = []
+        for sauce in substitute_sauce_list:
+            for sentence in sent_list:
+                count = sentence.count(sauce)
+                if count > 1:
+                    if sauce + "," in sentence:
+                        sentence = sentence.replace(sauce+",","",1)
+
+                    else:
+                        sentence = sentence.replace(sauce,"",1)
+                    #if "  " in sentence:
+                    sentence = ' '.join(sentence.split())
+
+            
+                new_sent_list.append(sentence)
+        print(new_sent_list)
+        new_step = ""
+        for element in new_sent_list:
+            new_step = new_step + element + " "
+        if new_step != "": new_step[:-1]
+        step = new_step
+        recipe['Instructions'][step_index] = new_step
 
     if flag:
         recipe['Name'] = 'Italian' + recipe['Name'] + "Cuisine Swapped"
