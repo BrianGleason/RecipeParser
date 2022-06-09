@@ -88,4 +88,8 @@ def quantity_full(recipe, ratio):
 
 def quantity_mod(ingredient, ratio):
     if ingredient["quantity"]:
-        ingredient["quantity"] = str(Fraction(Decimal(ingredient["quantity"].strip(' "')) * ratio))
+
+        # Verify ingredient quantity is valid number (for repeat conversions)
+        quantity = float(Fraction(ingredient["quantity"]))
+
+        ingredient["quantity"] = str(Fraction((Decimal(quantity) * ratio)))
