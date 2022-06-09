@@ -6,14 +6,17 @@
   - Enter 2 at prompt
 3. Transform https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/ to Healthy:
   - Enter 4 at prompt, then enter 1
+  - See video for explanation - Carson
 4. Transform https://www.allrecipes.com/recipe/228285/teriyaki-salmon/ to Un-healthy:
   - Enter 5 at prompt, then enter 2
+  - See video for explanation - Carson
 5. Transform https://www.allrecipes.com/recipe/229293/korean-saewoo-bokkeumbap-shrimp-fried-rice/ to Italian:
   - Enter 3 at prompt
 6. Transform https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/ to lactose-free:
   - Enter 8 at prompt
 7. Transform https://www.allrecipes.com/recipe/73303/mexican-rice-iii/ by doubling amount:
-  - Enter 6 at prompt
+  - Enter 6 at prompt, then enter 2
+  - See video for explanation - Carson
 8. Transform https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/ cooking method:
   - Enter 7 at prompt
 
