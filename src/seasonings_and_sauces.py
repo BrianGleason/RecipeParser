@@ -5,7 +5,7 @@ import json
 ps = PorterStemmer()
 
 def get_food_item(recipe, food_file_path, key):
-    with open(os.path.dirname(__file__) + food_file_path) as food_file:
+    with open(os.path.dirname(__file__) + food_file_path, encoding='utf-8') as food_file:
         data = json.load(food_file)
         lines = data[key]
     outputlist = set()

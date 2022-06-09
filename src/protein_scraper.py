@@ -55,5 +55,5 @@ for legume in legumes:
         legume_set.add(str)
 proteins['legumes'] = list(legume_set)
 
-with open('../lists/formatted_proteins_list.json', 'w') as f:
+with open('../lists/formatted_proteins_list.json', 'w', encoding='utf-8') as f:
     json.dump(proteins, f, ensure_ascii=False)

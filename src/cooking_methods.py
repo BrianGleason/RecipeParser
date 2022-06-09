@@ -3,7 +3,7 @@ import json
 
 
 def get_cooking_method(url, cookingmethod_file_path):
-    cooking_methods_tools_data = open(cookingmethod_file_path)
+    cooking_methods_tools_data = open(cookingmethod_file_path, encoding='utf-8')
     cmt_dict = json.load(cooking_methods_tools_data)
     recipe = parse_recipe(url)
     lines = set(cmt_dict)

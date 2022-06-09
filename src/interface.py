@@ -8,6 +8,7 @@ import shutil
 import validators
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 from italian_cuisine_substitution import italian_cuisine_substitution
+from cooking_method_substitution import substitute_cooking_method
 
 
 termsize = shutil.get_terminal_size().columns
@@ -68,8 +69,19 @@ elif transform == 6:
     quantity_mod(recipe['Ingredients'])
 elif transform == 7:
     predicate = "Method Swapped"
-    # TODO: Change cooking method
-    sys.exit('Unsupported')
+    print("\n")
+    print(colored("What method do you want to replace, and with what? Avalable options:".center(termsize),'green'))
+    print("For Boil (Enter 1)")
+    print("For Bake (Enter 2)")
+    print("For Pan Fry (Enter 3)")
+    print("For Grill (Enter 4)")
+    print("For Steam (Enter 5)")
+    print("For Smoke (Enter 6)")
+    method_list = ["boil", "bake", "fry", "grill", "steam", "smoke"]
+    print('Note: if you try to replace a method that is not used in the recipe, there will be nothing to replace')
+    remove_method = method_list[int(input('Your method to replace (1-6): ')) - 1]
+    add_method = method_list[int(input('Your method to add (1-6): ')) - 1]
+    substitute_cooking_method(recipe, add_method, remove_method)
 elif transform == 8:
     predicate = "Lactose-free"
     # TODO: Transform to lactose free

@@ -1,32 +1,200 @@
 {
-    "bake": ["oven"],
-    "boil": ["pot"],
-    "blanch": ["colander"],
-    "brine": ["bowl"],
-    "braise": ["pot"],
-    "coddle": ["oven"],
-    "infuse": ["infuser"],
-    "pressure cook": ["pressure cooker"],
-    "simmer": ["pan", "skillet", "wok"],
-    "poach": ["pan", "skillet", "wok"],
-    "steam": ["steamer"],
-    "steep": ["pot"],
-    "stew": ["pot"],
-    "grill": ["grill"],
-    "broil": ["oven"],
-    "barbecue": ["grill"],
-    "fry": ["pan", "skillet", "wok"],
-    "deep fry": ["deep pan", "skillet", "pan", "wok"],
-    "pan fry": ["pan", "skillet", "wok"],
-    "sauté": ["pan", "skillet", "wok"],
-    "saute": ["pan", "skillet", "wok"],
-    "stir-fry": ["pan", "skillet", "wok"],
-    "stir fry": ["pan", "skillet", "wok"],
-    "stirfry": ["pan", "skillet", "wok"],
-    "microwave": ["microwave oven"],
-    "roast": ["oven"],
-    "sear": ["pan", "skillet"],
-    "smoke": ["smoker"],
-    "caramelize": ["pan", "skillet", "wok"],
-    "charbroil": ["grill"]
+    "bake": {
+        "appliance": ["oven"],
+        "container": ["pan", "baking sheet", "tray", "baking tray"],
+        "cover": ["door"],
+        "place": ["rack"]
+    },
+    "boil": {
+        "appliance": ["stove"],
+        "container": ["pot"],
+        "cover": ["lid"],
+        "place": ["burner"]
+    },
+    "blanch": {
+        "appliance": ["stove"],
+        "container": ["colander"],
+        "cover": ["lid"],
+        "place": ["burner"]
+    },
+    "brine": {
+        "appliance": ["counter"],
+        "container": ["bowl"],
+        "cover": ["lid"],
+        "place": ["counter"]
+    },
+    "braise": {
+        "appliance": ["stove"],
+        "container": ["pot"],
+        "cover": ["lid"],
+        "place": ["burner"]
+    },
+    "coddle": {
+        "appliance": ["oven"],
+        "container": ["pan", "baking sheet", "tray", "baking tray"],
+        "cover": ["door"],
+        "place": ["rack"]
+    },
+    "infuse": {
+        "appliance": ["infuser"],
+        "container": ["infuser"],
+        "cover": ["lid"],
+        "place": ["counter"]
+    },
+    "pressure cook": {
+        "appliance": ["pressure cooker"],
+        "container": ["pressure cooker pot"],
+        "cover": ["lid"],
+        "place": ["counter"]
+    },
+    "simmer": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+    },
+    "poach": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "steam": {
+        "appliance": ["steamer"],
+        "container": ["steamer"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "steep": {
+        "appliance": ["stove"],
+        "container": ["pot"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "stew": {
+        "appliance": ["stove"],
+        "container": ["pot"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "grill": {
+        "appliance": ["grill"],
+        "container": ["grill tray"],
+        "cover": ["hood"],
+        "place": ["grill"]
+
+    },
+    "broil": {
+        "appliance": ["stove"],
+        "container": ["oven"],
+        "cover": ["door"],
+        "place": ["rack"]
+
+    },
+    "barbecue": {
+        "appliance": ["grill"],
+        "container": ["grill tray"],
+        "cover": ["hood"],
+        "place": ["grill"]
+
+    },
+    "fry": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "deep fry": {
+        "appliance": ["stove"],
+        "container": ["deep pan", "skillet", "pan", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "pan fry": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "sauté": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "saute": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "stir-fry": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "stir fry": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+    },
+    "stirfry": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "microwave": {
+        "appliance": ["microwave oven", "microwave"],
+        "cover": ["door"],
+        "place": ["plate"]
+
+    },
+    "roast": {
+        "appliance": ["oven"],
+        "container": ["tray", "pan", "baking sheet", "sheet"],
+        "cover": ["door"],
+        "place": ["rack"]
+
+    },
+    "sear": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "smoke": {
+        "appliance": ["smoker"],
+        "container": ["tray"],
+        "cover": ["door"],
+        "place": ["rack"]
+
+    },
+    "caramelize": {
+        "appliance": ["stove"],
+        "container": ["pan", "skillet", "wok"],
+        "cover": ["lid"],
+        "place": ["burner"]
+
+    },
+    "charbroil": {
+        "appliance": ["grill"],
+        "container": ["grill tray"],
+        "cover": ["hood"],
+        "place": ["grill"]
+    }
 }

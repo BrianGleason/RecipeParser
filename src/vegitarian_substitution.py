@@ -14,7 +14,7 @@ def to_vegetarian(recipe):
             replace_ingredient_list(ingredients, ingredient['name'], 'tofu')
 
 def from_vegetarian(recipe):
-    protein_data = open(os.path.dirname(__file__) + f'/../lists/formatted_proteins_list.json')
+    protein_data = open(os.path.dirname(__file__) + f'/../lists/formatted_proteins_list.json', encoding='utf-8')
     protein_dict = json.load(protein_data)
     meats = protein_dict['meat-fish']
     ingredients = recipe['Ingredients']
