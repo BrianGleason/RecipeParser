@@ -23,14 +23,19 @@
   - Enter 5 at prompt, then enter 2
   - See video for explanation - Carson
 5. Transform https://www.allrecipes.com/recipe/229293/korean-saewoo-bokkeumbap-shrimp-fried-rice/ to Italian:
-  - Enter 3 at prompt
+  - For our cuisine transformation, we transformed all the ingredient catagories that have the largest impact on flavor
+    and 'cuisine' without changing the core of the meal. (seasonings and herbs, produce, sauces)
+  - By doing so, the ingredients could be added at the same stages of the instructions while still being cooked properly.
+  - We also made sure when replacing ingredients like sauces that their serving sizes are correct and proportional to the servings of the recipe
+   (don't want to replace 1 tbsp of soy sauce with 1 tbsp tomato sauce)
 6. Transform https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/ to lactose-free:
   - Enter 8 at prompt
 7. Transform https://www.allrecipes.com/recipe/73303/mexican-rice-iii/ by doubling amount:
   - Enter 6 at prompt, then enter 2
   - See video for explanation - Carson
 8. Transform https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/ cooking method:
-  - Enter 7 at prompt
+  - To maintain accuracy, the cooking method substitution also transforms associated key kitchen tools. For example, you can see that baking was substituted for frying,
+    but the oven was also substituted for a stove and the door of the oven was substituted for a pan lid. For other methods, things like pans, grill grates, etc. are also substituted.
 
 # Example Usage
 
