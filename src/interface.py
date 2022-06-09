@@ -17,7 +17,7 @@ while True:
     try:
         url = input('URL: ')
         assert validators.url(url)
-    except:
+    except AssertionError:
         print("Please enter a valid All Recipes URL.")
     else:
         break

@@ -59,7 +59,7 @@ def healthy_conversion(recipe, conversion, termsize):
 
         elif method == 2:
             if any((match := category) == ingredient['type'] for category in aggro_categories):
-                # Limit to one replacement per category
+                # FIXME Limit to one replacement per category
                 aggro_categories.remove(match)
 
                 if conversion == "healthy":
