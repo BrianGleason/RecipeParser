@@ -10,6 +10,7 @@ from healthy import serving_size, healthy_conversion
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 from italian_cuisine_substitution import italian_cuisine_substitution
 from cooking_method_substitution import method_interface
+from dairy_free import make_dairy_free
 
 termsize = shutil.get_terminal_size().columns
 print(colored("Enter an All Recipes URL:".center(termsize), 'green'))
@@ -17,7 +18,7 @@ while True:
     try:
         url = input('URL: ')
         assert validators.url(url)
-    except:
+    except AssertionError:
         print("Please enter a valid All Recipes URL.")
     else:
         break
@@ -62,7 +63,6 @@ elif transform == 6:
 elif transform == 7:
     method_interface(recipe, termsize)
 elif transform == 8:
-    # TODO: Transform to lactose free
-    sys.exit('Unsupported')
+    make_dairy_free(recipe)
 
 print_recipe(recipe, termsize, 'green', 'blue')

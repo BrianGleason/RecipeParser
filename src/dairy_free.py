@@ -2,10 +2,10 @@ from utils.utilities import parse_recipe, replace_ingredient, replace_ingredient
 import json
 
 def make_dairy_free(recipe):
-    dairy_free_data = open("lists/lactose_list.json", encoding='utf-8')
+    dairy_free_data = open("../lists/lactose_list.json", encoding='utf-8')
     df_dict = json.load(dairy_free_data)
     dairy_free_data.close()
-    cheese_file = open('lists/cheese_list.txt', encoding='utf-8')
+    cheese_file = open('../lists/cheese_list.txt', encoding='utf-8')
     cheeses = cheese_file.readlines()
     cheese_file.close()
     for ing in df_dict:
@@ -17,6 +17,7 @@ def make_dairy_free(recipe):
         replace_ingredient(recipe['Instructions'], cheese, 'dairy free ' + cheese)
         replace_ingredient_list(recipe['Ingredients'], cheese, 'dairy free ' + cheese, changedkey="Lactose")
 
+    recipe['Name'] = "Lactose-free " + recipe['Name']
 
 if __name__ == '__main__':
     urls = get_all_urls()

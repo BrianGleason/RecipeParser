@@ -10,8 +10,6 @@ import urllib.request
 import requests
 from bs4 import BeautifulSoup
 
-_usda_key = "KCB7Ijl50I1oHVbmgjD6VGguegsxW34dKMwtfPt1"
-
 import json
 import os
 import shutil
@@ -116,13 +114,13 @@ def parse_recipe(url):
 
     return recipe
 
-def query_fooddata(ingredient):
+def query_fooddata(ingredient, api_key):
     """Query USDA FoodData Central with ingredient name, returns relevant dietary information
     Note: long queries usually result in inaccurate results.
     """
     response = requests.post(
         r'https://api.nal.usda.gov/fdc/v1/search',
-        params = {'api_key': _usda_key},
+        params = {'api_key': api_key},
         json = {'generalSearchInput': ingredient["name"]}
     )
 
@@ -140,16 +138,29 @@ def query_fooddata(ingredient):
 
 def replace_all(recipe, target, substitute):
     """ Replace ingredient in instructions and ingredient list.
-
-    FIXME: replace simplified reference to replaced ingredient
-    i.e. "wine" in replaced ingredient "Burgondy wine"
-    Change target based on both words
     """
+
+    # Replace ingredient in ingredient list
     replace = re.compile(re.escape(target), re.IGNORECASE)
+    for i, ingredient in enumerate(recipe['Ingredients']):
+            recipe['Ingredients'][i]['name'] = replace.sub(substitute, recipe['Ingredients'][i]['name'])
+
+    # Hack: replace descriptor word
+    try:
+        descriptor, subject = target.split(" ")
+    except ValueError:
+        descriptor = None
+        subject = None
+
+    if descriptor:
+        replace = re.compile(re.escape(descriptor), re.IGNORECASE)
+
+    # Replace ingredient in recipe name
+    recipe['Name'] = replace.sub(substitute.capitalize(), recipe['Name'])
+
+    # Replace ingredient in instruction list
     for i, instruction in enumerate(recipe['Instructions']):
         recipe['Instructions'][i] = replace.sub(substitute, recipe['Instructions'][i])
-    for i, ingredient in enumerate(recipe['Ingredients']):
-        recipe['Ingredients'][i]['name'] = replace.sub(substitute, recipe['Ingredients'][i]['name'])
 
 def replace_ingredient(instructions, target, substitute):
     for i, instruction in enumerate(instructions):
