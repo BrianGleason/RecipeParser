@@ -1,0 +1,26 @@
+{
+  "butter":
+  [
+    "applesauce",
+    "avocado",
+    "vegetable oil"
+  ],
+  "sugar":
+  [
+    "honey",
+    "molasses",
+    "agave nectar"
+  ],
+  "salt":
+  [
+    "pepper flakes",
+    "garlic powder",
+    "chili powder"
+  ],
+  "wine":
+  [
+    "apple juice",
+    "chardonnay",
+    "syrah"
+  ]
+}

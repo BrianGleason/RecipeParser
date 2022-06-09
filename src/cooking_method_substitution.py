@@ -165,6 +165,7 @@ def substitute_cooking_method(recipe, add_method, remove_method):
                             substep[container_index] = add_container
                     
     compose_substeps_into_instructions(recipe)
+    recipe['Name'] = f'{recipe["Name"]} ({remove_method.capitalize()} replaced with {add_method.capitalize()})'
     #print("AFTER", recipe['Instructions'])
 
 

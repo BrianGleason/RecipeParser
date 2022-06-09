@@ -93,14 +93,14 @@ def italian_cuisine_substitution(recipe, url):
         '''
         # if is grain, check primary cooking method
     # combine instances of same sauces, adjust serving size
-    
+
     sorted_replace_dict = {}
     for k in sorted(replace_dict, key=len, reverse=True):
         sorted_replace_dict[k] = replace_dict[k]
     for key, value in sorted_replace_dict.items():
         replace_ingredient(instructions, key, value)
         replace_ingredient_list(ingredients, key, value)
-    
+
     # replace all duplicate ingredients from substitutions
     seen_ingredients = set()
     for index in range(len(ingredients)):
@@ -123,7 +123,7 @@ def italian_cuisine_substitution(recipe, url):
             recipe['Name'] = recipe['Name'].replace(word, "")
             flag = True
 
-    if flag: 
+    if flag:
         recipe['Name'] = 'Italian' + recipe['Name'] + "Cuisine Swapped"
     else:
         recipe['Name'] = 'Italian ' + recipe['Name'] + " (Cuisine Swapped)"
@@ -138,6 +138,3 @@ def main():
 
     recipe = parse_recipe(url)
     italian_cuisine_substitution(recipe, url)
-
-
-main()

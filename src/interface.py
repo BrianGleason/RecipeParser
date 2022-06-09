@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
-from utils.utilities import parse_recipe, print_recipe
-from quantity import quantity_mod
 import sys
 from termcolor import colored
 import shutil
 import validators
+
+from utils.utilities import parse_recipe, print_recipe
+from healthy import serving_size, healthy_conversion
 from vegitarian_substitution import to_vegetarian, from_vegetarian
 from italian_cuisine_substitution import italian_cuisine_substitution
 from cooking_method_substitution import substitute_cooking_method
-
 
 termsize = shutil.get_terminal_size().columns
 print(colored("Enter an All Recipes URL:".center(termsize), 'green'))
@@ -28,9 +28,9 @@ print_recipe(recipe, termsize, 'green', 'red')
 print(colored("What transformation do you want to perform? Avalable options:".center(termsize),'green'))
 print("To vegitarian (Enter 1)")
 print("To non-vegitarian (Enter 2)")
-print("To healthy (Enter 3)")
-print("To unhealthy (Enter 4)")
-print("To Italian (Enter 5)")
+print("To Italian (Enter 3)")
+print("To healthy (Enter 4)")
+print("To unhealthy (Enter 5)")
 print("Change serving amount (Enter 6)")
 print("Change cooking method (Enter 7)")
 print("To lactose-free (Enter 8)")
@@ -48,27 +48,18 @@ while True:
         break
 
 if transform == 1:
-    predicate = "Vegitarian"
-    #to_vegetarian(recipe)
+    to_vegetarian(recipe)
 elif transform == 2:
-    predicate = "Non-vegitarian"
-    #from_vegetarian(recipe)
+    from_vegetarian(recipe)
 elif transform == 3:
-    predicate = "Healthy"
-    # TODO: Transforrm to healthy
-    sys.exit('Unsupported')
-elif transform == 4:
-    predicate = "Unhealthy"
-    # TODO: Transform to unhealthy
-    sys.exit('Unsupported')
-elif transform == 5:
-    predicate = "Italian"
     italian_cuisine_substitution(recipe, url)
+elif transform == 4:
+    healthy_conversion(recipe, "healthy")
+elif transform == 5:
+    healthy_conversion(recipe, "unhealthy")
 elif transform == 6:
-    predicate = "Smaller/Larger"
-    quantity_mod(recipe['Ingredients'])
+    serving_size(recipe)
 elif transform == 7:
-    predicate = "Method Swapped"
     print("\n")
     print(colored("What method do you want to replace, and with what? Avalable options:".center(termsize),'green'))
     print("For Boil (Enter 1)")
@@ -83,9 +74,7 @@ elif transform == 7:
     add_method = method_list[int(input('Your method to add (1-6): ')) - 1]
     substitute_cooking_method(recipe, add_method, remove_method)
 elif transform == 8:
-    predicate = "Lactose-free"
     # TODO: Transform to lactose free
     sys.exit('Unsupported')
 
-recipe['Name'] = predicate + " " + recipe['Name']
 print_recipe(recipe, termsize, 'green', 'blue')

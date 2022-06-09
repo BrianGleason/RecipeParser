@@ -1,0 +1,42 @@
+{
+  "Herbs and Spices": {
+    "Reasonable": "Yes",
+    "Healthy": ["tumeric", "ginger", "cumin"],
+    "Unhealthy": ["st. john's wort", "fish oil", "artemisinin"]
+  },
+  "Produce": {
+    "Reasonable": "No",
+    "Healthy": ["broccoli", "carrots", "spinach"],
+    "Unhealthy": ["rotten tomatoes", "dark chocolate raisins", "yellow star fruit"]
+  },
+  "Beverages": {
+    "Reasonable": "Yes",
+    "Healthy": ["water", "apple juice", "soy milk"],
+    "Unhealthy": ["red wine", "vodka", "rye whiskey"]
+  },
+  "Natural/Organic Foods": {
+    "Reasonable": "Yes",
+    "Healthy": ["seitan", "lentils", "beans"],
+    "Unhealthy": ["peanuts", "crickets", "trail mix"]
+  },
+  "Basic Cooking Ingredients": {
+    "Reasonable": "Yes",
+    "Healthy": ["avocado oil", "sunflower oil", "coconut oil"],
+    "Unhealthy": ["butter", "lard", "monosodium glutamate"]
+  },
+  "Baking Supplies": {
+    "Reasonable": "Yes",
+    "Healthy": ["mannitol", "sorbitol", "xylitol"],
+    "Unhealthy": ["sugar", "high-fructose corn syrup", "guar gum"]
+  },
+  "Dairy, Eggs and Milk": {
+    "Reasonable": "No",
+    "Healthy": ["feta cheese", "eggs", "oat milk"],
+    "Unhealthy": ["ice cream", "goldfish", "chocolate"]
+  },
+   "Meats, Fish and Seafood": {
+    "Reasonable": "No",
+    "Healthy": ["turkey", "lamb", "veal"],
+    "Unhealthy": ["hot dogs", "mcnuggets", "imported swordfish"]
+  }
+}

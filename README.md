@@ -8,6 +8,8 @@ No CLI arguments are needed, script will prompt for them when necessary.
 
 First prompt will be for an All Recipes URL. Enter it without quotes. Then enter the desired transform when prompted.
 
+Some options require additional input: healthy/unhealthy conversion, and changing serving size.
+
 # Presentations
 
 In your zip file submission, all groups must include a short video (maximum of 10 minutes) named "demo_video" demonstrating your solution.

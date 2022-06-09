@@ -32,6 +32,8 @@ def recipe_interface(url):
     """
     termsize = shutil.get_terminal_size().columns
     recipe = parse_recipe(url)
+    print("Printing full recipe information:")
+    pprint(recipe)
     print_recipe(recipe, termsize, 'green', 'blue')
 
 def print_recipe(recipe, termsize, primary_color, secondary_color):
@@ -44,8 +46,9 @@ def print_recipe(recipe, termsize, primary_color, secondary_color):
         print(colored(statement, secondary_color))
 
     print(colored('Instructions'.center(termsize),primary_color))
-    for instruction in recipe['Instructions']:
-        print(colored(instruction, secondary_color))
+    for i, instruction in enumerate(recipe['Instructions']):
+        statement = "Step " + str(i + 1) + ": " + instruction
+        print(colored(statement, secondary_color), end="\n\n")
 
 def parse_recipe(url):
     """Crawl url and return recipe data
@@ -80,7 +83,7 @@ def parse_recipe(url):
         ingredient['unit'] = tag.findChild("input")['data-unit']
         ingredient['type'] = tag.findChild("input")['data-store_location']
 
-        # TODO: Add identification passes to ingredients here
+        # Add identification passes to ingredients here
         ingredient['contains'] = {'Meat': None, 'Gluten': None, 'Lactose': None}
 
         # Meat Identification
@@ -135,11 +138,18 @@ def query_fooddata(ingredient):
 
     return diet
 
-def quantity_mod(ingredients, ratio):
-    for ingredient in ingredients:
-        if ingredient["quantity"]: ingredient["quantity"] *= ratio
+def replace_all(recipe, target, substitute):
+    """ Replace ingredient in instructions and ingredient list.
 
-    return ingredients
+    FIXME: replace simplified reference to replaced ingredient
+    i.e. "wine" in replaced ingredient "Burgondy wine"
+    Change target based on both words
+    """
+    replace = re.compile(re.escape(target), re.IGNORECASE)
+    for i, instruction in enumerate(recipe['Instructions']):
+        recipe['Instructions'][i] = replace.sub(substitute, recipe['Instructions'][i])
+    for i, ingredient in enumerate(recipe['Ingredients']):
+        recipe['Ingredients'][i]['name'] = replace.sub(substitute, recipe['Ingredients'][i]['name'])
 
 def replace_ingredient(instructions, target, substitute):
     for i, instruction in enumerate(instructions):
