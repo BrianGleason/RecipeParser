@@ -14,8 +14,7 @@ Some options require additional input: healthy/unhealthy conversion, changing se
 
 1. Transform https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/ to Vegetarian: 
   - Enter 1 at prompt
-  - Note
-  	
+  - Note:
 	  A non-vegetarian ingredient is replaced according to the following rules
 	1. If ingredient has other nouns, non-vegetarian item is dropped (e.g. sausage flavored pasta sauce --> flavored pasta sauce.)
 	2. If non-vegetarian ingredient is adjective, change adjective to vegetarian (beef stew --> vegetarian stew)
@@ -23,18 +22,16 @@ Some options require additional input: healthy/unhealthy conversion, changing se
 	4. If no substitute exists, replace with Tofu
 2. Transform https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/ to Non-vegetarian:
   - Enter 2 at prompt
-  - Note
-
-  	1. If ingredient is fruit, vegetable, or Natural/Organic Food, it's replaced with a random meat (scraped from web)
-
+  - If ingredient is fruit, vegetable, or Natural/Organic Food, it's replaced with a random meat (scraped from web)
 	2. This is only done once (don't want to replace too many non-meat ingredients w/ meats), and it prefers to replace Natural/Organic Foods
 	3. If no replacement is found, a random ingredient is replaced
 3. Transform https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/ to Healthy:
   - Enter 4 at prompt, then enter 1
-  - See video for explanation - Carson
+  - (Conservative healthy method) Replaces certain ingredients with reasonable healthy alternatives, and reduces serving size slightly.
+  - Healthy alternatives was based on what the USDA FoodBank deems a healthy alternative to a given ingredient, within the same category. 
 4. Transform https://www.allrecipes.com/recipe/228285/teriyaki-salmon/ to Un-healthy:
   - Enter 5 at prompt, then enter 2
-  - See video for explanation - Carson
+  - (Aggressive unhealthy method) Replaces most ingredients with somewhat reasonable unhealthy alternatives, and increases serving size slightly. 
 5. Transform https://www.allrecipes.com/recipe/229293/korean-saewoo-bokkeumbap-shrimp-fried-rice/ to Italian:
   - For our cuisine transformation, we transformed all the ingredient catagories that have the largest impact on flavor
     and 'cuisine' without changing the core of the meal. (seasonings and herbs, produce, sauces)
@@ -45,13 +42,13 @@ Some options require additional input: healthy/unhealthy conversion, changing se
   - Enter 8 at prompt
 7. Transform https://www.allrecipes.com/recipe/73303/mexican-rice-iii/ by doubling amount:
   - Enter 6 at prompt, then enter 2
-  - See video for explanation - Carson
+  - Doubles amount of each ingredient quantity. 
 8. Transform https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/ cooking method:
   - To maintain accuracy, the cooking method substitution also transforms associated key kitchen tools. For example, you can see that baking was substituted for frying,
     but the oven was also substituted for a stove and the door of the oven was substituted for a pan lid. For other methods, things like pans, grill grates, etc. are also substituted.
   - The cooking method also makes general heat estimates out of any temperature values, translating them to 'high, medium, or low'
 9. Transform https://www.allrecipes.com/recipe/262490/vegan-spaghetti/ to non-vegetarian, non-healthy, and italian:
-  - Enter 2, y, 5, y, 3, n
+  - Enter 2, y, 5, 2, y, 3, n
 
 # Presentations
 
