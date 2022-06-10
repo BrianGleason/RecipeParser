@@ -40,6 +40,9 @@ Some options require additional input: healthy/unhealthy conversion, changing se
    (don't want to replace 1 tbsp of soy sauce with 1 tbsp tomato sauce)
 6. Transform https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/ to lactose-free:
   - Enter 8 at prompt
+  - For transformation to a lactose-free recipe, we transformed all the ingredients that contain milk or milk products by substituting them with plant  based/dairy free alternatives. 
+  - We choose substitutes that have similar textures and cooking time so that the steps in the recipe remain the same.
+
 7. Transform https://www.allrecipes.com/recipe/73303/mexican-rice-iii/ by doubling amount:
   - Enter 6 at prompt, then enter 2
   - Doubles amount of each ingredient quantity. 
