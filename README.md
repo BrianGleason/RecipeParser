@@ -12,6 +12,8 @@ Some options require additional input: healthy/unhealthy conversion, changing se
 
 # Demo
 
+- First the allrecipes url is fetched and the ingredients/instructions are identified. The original recipe will print, and depending on the transformation the resulting (changed) recipe will print in a new color. 
+
 1. Transform https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/ to Vegetarian: 
   - Enter 1 at prompt
   - Note:
