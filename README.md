@@ -1,3 +1,15 @@
+# Example Usage
+
+```
+cd src && chmod +x interface.py
+./interface.py
+```
+No CLI arguments are needed, script will prompt for them when necessary.
+
+First prompt will be for an All Recipes URL. Enter it without quotes. Then enter the desired transform when prompted.
+
+Some options require additional input: healthy/unhealthy conversion, changing serving size, and changing cooking method. 
+
 # Demo
 
 1. Transform https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/ to Vegetarian: 
@@ -40,18 +52,6 @@
   - The cooking method also makes general heat estimates out of any temperature values, translating them to 'high, medium, or low'
 9. Transform https://www.allrecipes.com/recipe/262490/vegan-spaghetti/ to non-vegetarian, non-healthy, and italian:
   - Enter 2, y, 5, y, 3, n
-
-# Example Usage
-
-```
-cd src && chmod +x interface.py
-./interface.py
-```
-No CLI arguments are needed, script will prompt for them when necessary.
-
-First prompt will be for an All Recipes URL. Enter it without quotes. Then enter the desired transform when prompted.
-
-Some options require additional input: healthy/unhealthy conversion, changing serving size, and changing cooking method. 
 
 # Presentations
 
