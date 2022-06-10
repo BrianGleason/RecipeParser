@@ -38,7 +38,8 @@
   - To maintain accuracy, the cooking method substitution also transforms associated key kitchen tools. For example, you can see that baking was substituted for frying,
     but the oven was also substituted for a stove and the door of the oven was substituted for a pan lid. For other methods, things like pans, grill grates, etc. are also substituted.
   - The cooking method also makes general heat estimates out of any temperature values, translating them to 'high, medium, or low'
-9. Transform https://www.allrecipes.com/recipe/229166/grilled-veggie-skewers/, non-vegetarian, then cooking method
+9. Transform https://www.allrecipes.com/recipe/262490/vegan-spaghetti/ to non-vegetarian, non-healthy, and italian:
+  - Enter 2, y, 5, y, 3, n
 
 # Example Usage
 
